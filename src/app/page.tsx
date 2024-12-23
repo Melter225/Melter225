@@ -1,5 +1,23 @@
-import Image from "next/image";
+import Header from "./header.tsx";
+import Hero from "./hero.tsx";
+import Awards from "./awards.tsx";
+import About from "./about.tsx";
+import Projects from "./projects.tsx";
+import Testimonials from "./testimonials.tsx";
+import Contact from "./contact.tsx";
+import Footer from "./footer.tsx";
 
 export default function PersonalPortfolio() {
-  return <div></div>;
+  return (
+    <div>
+      <Header />
+      <Hero />
+      <Awards />
+      <About />
+      <Projects />
+      <Testimonials />
+      <Contact />
+      <Footer />
+    </div>
+  );
 }

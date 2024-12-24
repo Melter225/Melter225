@@ -15,7 +15,7 @@ export default function Awards() {
   ];
 
   return (
-    <div className="flex w-[200rem] h-[6rem] items-center justify-center gap-x-5 mb-5">
+    <div className="flex w-[200rem] h-[6rem] items-center justify-center gap-x-5 mb-24">
       {awards.map(({ src, alt }, index) => (
         <div
           key={`${index}`}

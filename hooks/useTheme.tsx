@@ -9,7 +9,5 @@ export function useTheme() {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   };
 
-  console.log(theme);
-
   return { theme, toggleTheme };
 }

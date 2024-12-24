@@ -8,7 +8,7 @@ export default function Header() {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <div className="flex w-full h-20 items-center bg-gray-950 shadow-lg backdrop-blur-md border-2 border-gray-950 border-b-neutral-800">
+    <div className="flex z-50 fixed w-full h-20 items-center bg-gray-950/50 shadow-lg backdrop-blur-md border-2 border-gray-950 border-b-neutral-800">
       <div className="ml-5">
         <Image
           src="/PersonalLogo.png"

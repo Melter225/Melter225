@@ -9,6 +9,7 @@ interface ThemeProviderProps {
 
 export function ThemeProvider({ children, poppinsClass }: ThemeProviderProps) {
   const { theme } = useTheme();
+  console.log(theme);
 
   return (
     <body

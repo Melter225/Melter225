@@ -1,0 +1,246 @@
+"use client";
+
+// import Image from "next/image";
+import React, { useEffect, useRef } from "react";
+import { MdClose } from "react-icons/md";
+
+export default function Projects() {
+  const secondProjectRef = useRef<HTMLDivElement>(null);
+  const thirdProjectRef = useRef<HTMLDivElement>(null);
+
+  const projects = [
+    {
+      title: "DevX",
+      description: `Description Description Description Description Description
+            Description Description Description Description Description
+            Description Description Description Description Description
+            Description Description Description Description Description`,
+    },
+    {
+      title: "Quix",
+      description: `Description Description Description Description Description
+            Description Description Description Description Description
+            Description Description Description Description Description
+            Description Description Description Description Description`,
+    },
+    {
+      title: "Cibar",
+      description: `Description Description Description Description Description
+            Description Description Description Description Description
+            Description Description Description Description Description
+            Description Description Description Description Description`,
+    },
+  ];
+
+  const showPopup = (title: string) => {
+    const project = projects.find((project) => project.title == title);
+    const description = project?.description || "";
+
+    const popup = document.querySelector(".popup");
+    popup?.classList.remove("hidden");
+
+    const popupTitle = document.querySelector(".popup-title");
+    const popupDescription = document.querySelector(".popup-description");
+
+    if (popupTitle && popupDescription) {
+      popupTitle.textContent = title;
+      popupDescription.textContent = description;
+    }
+  };
+
+  const hidePopup = () => {
+    const popup = document.querySelector(".popup");
+    popup?.classList.add("hidden");
+  };
+
+  //scrolling covers footer
+  useEffect(() => {
+    const handleScroll = (e: WheelEvent) => {
+      if (!secondProjectRef.current || !thirdProjectRef.current) return;
+
+      const projectTitle = document.querySelector(".project_title");
+      const firstProject = document.querySelector(".first_project");
+      const secondProject = secondProjectRef.current;
+      const thirdProject = thirdProjectRef.current;
+
+      if (!projectTitle || !firstProject || !secondProject || !thirdProject)
+        return;
+
+      const rem = parseFloat(
+        getComputedStyle(document.documentElement).fontSize
+      );
+
+      const titleTop = projectTitle.getBoundingClientRect().top;
+      const potentialTitleTop = titleTop - e.deltaY;
+
+      const secondProjectTop = secondProject.getBoundingClientRect().top;
+      const potentialSecondTop = secondProjectTop - e.deltaY - rem * 2.5;
+
+      const thirdProjectTop = thirdProject.getBoundingClientRect().top;
+      const potentialThirdTop = thirdProjectTop - e.deltaY - rem;
+
+      if (e.deltaY > 0) {
+        if (
+          potentialTitleTop <= rem * 9 &&
+          potentialSecondTop >= potentialTitleTop
+        ) {
+          e.preventDefault();
+
+          const currentMarginRem = parseFloat(
+            secondProject.style.marginTop || "0"
+          );
+          const rootFontSize = parseFloat(
+            getComputedStyle(document.documentElement).fontSize
+          );
+
+          secondProject.style.marginTop = `${
+            currentMarginRem - e.deltaY / rootFontSize
+          }rem`;
+        } else if (
+          potentialThirdTop >= secondProjectTop &&
+          secondProject.style.marginTop
+        ) {
+          e.preventDefault();
+
+          const currentMarginRem = parseFloat(
+            thirdProject.style.marginTop || "0"
+          );
+          const rootFontSize = parseFloat(
+            getComputedStyle(document.documentElement).fontSize
+          );
+
+          thirdProject.style.marginTop = `${
+            currentMarginRem - e.deltaY / rootFontSize
+          }rem`;
+        }
+      } else if (e.deltaY < 0) {
+        if (
+          thirdProject.style.marginTop &&
+          parseFloat(thirdProject.style.marginTop) < 0
+        ) {
+          e.preventDefault();
+          const currentMarginRem = parseFloat(thirdProject.style.marginTop);
+          const rootFontSize = parseFloat(
+            getComputedStyle(document.documentElement).fontSize
+          );
+          const newMargin = currentMarginRem - e.deltaY / rootFontSize;
+          thirdProject.style.marginTop = `${newMargin}rem`;
+        } else if (
+          secondProject.style.marginTop &&
+          parseFloat(secondProject.style.marginTop) < 0
+        ) {
+          e.preventDefault();
+          const currentMarginRem = parseFloat(secondProject.style.marginTop);
+          const rootFontSize = parseFloat(
+            getComputedStyle(document.documentElement).fontSize
+          );
+          const newMargin = currentMarginRem - e.deltaY / rootFontSize;
+          secondProject.style.marginTop = `${newMargin}rem`;
+        }
+      }
+    };
+
+    window.addEventListener("wheel", handleScroll, { passive: false });
+
+    return () => {
+      window.removeEventListener("wheel", handleScroll);
+    };
+  }, []);
+
+  return (
+    <div>
+      <div className="project_title relative z-30 w-full text-center">
+        <h1 className="font-semibold text-5xl">Projects</h1>
+      </div>
+      <div className="first_project relative flex flex-col h-[calc(100svh-5rem)] mb-28">
+        <div className="flex flex-col flex-grow justify-center w-full px-24 gap-x-5">
+          <div className="flex flex-col w-1/3 bg-gray-800 border-2 border-gray-700 rounded-lg">
+            <p className="text-[1.65rem] font-bold pt-5 pl-5">DevX</p>
+            <p className="px-5 pt-2 pb-5 text-transparent bg-clip-text bg-gradient-to-b from-gray-200 to-transparent">
+              Description Description Description Description Description
+              Description Description Description Description Description
+              Description Description Description Description Description
+              Description Description Description Description Description
+              Description Description Description Description Description
+              Description Description Description Description Description
+              Description Description Description Description Description
+            </p>
+            <p
+              className="px-5 pb-5 text-[#0077b6] text-sm hover:cursor-pointer"
+              onClick={() => {
+                showPopup("DevX");
+              }}
+            >
+              Show More
+            </p>
+          </div>
+        </div>
+      </div>
+      <div
+        ref={secondProjectRef}
+        className="second_project z-10 relative flex flex-col h-[calc(100svh-5rem)] bg-gray-900 mb-28"
+      >
+        <div className="flex flex-col flex-grow justify-center items-end w-full px-24 gap-x-5">
+          <div className="flex flex-col w-1/3 bg-gray-800 border-2 border-gray-700 rounded-lg">
+            <p className="text-[1.65rem] font-bold pt-5 pl-5">Quix</p>
+            <p className="px-5 pt-2 pb-5 text-transparent bg-clip-text bg-gradient-to-b from-gray-200 to-transparent">
+              Description Description Description Description Description
+              Description Description Description Description Description
+              Description Description Description Description Description
+              Description Description Description Description Description
+              Description Description Description Description Description
+              Description Description Description Description Description
+              Description Description Description Description Description
+            </p>
+            <p
+              className="px-5 pb-5 text-[#0077b6] text-sm hover:cursor-pointer"
+              onClick={() => {
+                showPopup("Quix");
+              }}
+            >
+              Show More
+            </p>
+          </div>
+        </div>
+      </div>
+      <div
+        ref={thirdProjectRef}
+        className="third_project z-20 relative flex flex-col h-[calc(100svh-5rem)] bg-gray-900 mb-28"
+      >
+        <div className="flex flex-col flex-grow justify-center w-full px-24 gap-x-5">
+          <div className="flex flex-col w-1/3 bg-gray-800 border-2 border-gray-700 rounded-lg">
+            <p className="text-[1.65rem] font-bold pt-5 pl-5">Cibar</p>
+            <p className="px-5 pt-2 pb-5 text-transparent bg-clip-text bg-gradient-to-b from-gray-200 to-transparent">
+              Description Description Description Description Description
+              Description Description Description Description Description
+              Description Description Description Description Description
+              Description Description Description Description Description
+              Description Description Description Description Description
+              Description Description Description Description Description
+              Description Description Description Description Description
+            </p>
+            <p
+              className="px-5 pb-5 text-[#0077b6] text-sm hover:cursor-pointer"
+              onClick={() => {
+                showPopup("Cibar");
+              }}
+            >
+              Show More
+            </p>
+          </div>
+        </div>
+        <div className="fixed hidden popup z-40 w-screen h-screen top-[calc(15%+2.5rem)] left-[20%]">
+          <div className="w-[60%] h-[70%] bg-gray-800 border-2 border-gray-700 p-5 rounded-lg">
+            <h1 className="popup-title text-[2.175rem] font-bold">Title</h1>
+            <p className="popup-description mt-3">Description</p>
+            <div className="flex w-full justify-end">
+              <button className="absolute top-[1.25rem]" onClick={hidePopup}>
+                <MdClose className="text-red-600 hover:text-red-700 text-[2.5rem] transition-colors duration-200" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

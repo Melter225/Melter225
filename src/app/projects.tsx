@@ -53,7 +53,6 @@ export default function Projects() {
     popup?.classList.add("hidden");
   };
 
-  //scrolling covers footer
   useEffect(() => {
     const handleScroll = (e: WheelEvent) => {
       if (!secondProjectRef.current || !thirdProjectRef.current) return;
@@ -74,14 +73,19 @@ export default function Projects() {
       const potentialTitleTop = titleTop - e.deltaY;
 
       const secondProjectTop = secondProject.getBoundingClientRect().top;
-      const potentialSecondTop = secondProjectTop - e.deltaY - rem * 2.5;
+      const potentialSecondTop = secondProjectTop - e.deltaY - rem * 4.5;
 
       const thirdProjectTop = thirdProject.getBoundingClientRect().top;
-      const potentialThirdTop = thirdProjectTop - e.deltaY - rem;
+      const potentialThirdTop = thirdProjectTop - e.deltaY - rem * 1;
+      const thirdProjectBottom = thirdProject.getBoundingClientRect().bottom;
 
-      if (e.deltaY > 0) {
+      if (
+        e.deltaY > 0 &&
+        titleTop <= rem * 10 &&
+        thirdProjectBottom >= window.innerHeight - 5 * rem
+      ) {
         if (
-          potentialTitleTop <= rem * 9 &&
+          potentialTitleTop <= rem * 10 &&
           potentialSecondTop >= potentialTitleTop
         ) {
           e.preventDefault();
@@ -113,11 +117,16 @@ export default function Projects() {
             currentMarginRem - e.deltaY / rootFontSize
           }rem`;
         }
-      } else if (e.deltaY < 0) {
-        if (
-          thirdProject.style.marginTop &&
-          parseFloat(thirdProject.style.marginTop) < 0
-        ) {
+      } else if (
+        e.deltaY < 0 &&
+        titleTop <= rem * 10 &&
+        thirdProjectBottom >= window.innerHeight - 5 * rem
+      ) {
+        const thirdMargin = parseFloat(thirdProject.style.marginTop || "0");
+        const secondMargin = parseFloat(secondProject.style.marginTop || "0");
+
+        if (thirdMargin < 0) {
+          console.log(parseFloat(thirdProject.style.marginTop));
           e.preventDefault();
           const currentMarginRem = parseFloat(thirdProject.style.marginTop);
           const rootFontSize = parseFloat(
@@ -125,10 +134,7 @@ export default function Projects() {
           );
           const newMargin = currentMarginRem - e.deltaY / rootFontSize;
           thirdProject.style.marginTop = `${newMargin}rem`;
-        } else if (
-          secondProject.style.marginTop &&
-          parseFloat(secondProject.style.marginTop) < 0
-        ) {
+        } else if (secondMargin < 0) {
           e.preventDefault();
           const currentMarginRem = parseFloat(secondProject.style.marginTop);
           const rootFontSize = parseFloat(
@@ -149,7 +155,7 @@ export default function Projects() {
 
   return (
     <div>
-      <div className="project_title relative z-30 w-full text-center">
+      <div className="project_title relative z-30 w-full text-center mb-6">
         <h1 className="font-semibold text-5xl">Projects</h1>
       </div>
       <div className="first_project relative flex flex-col h-[calc(100svh-5rem)] mb-28">
@@ -178,7 +184,21 @@ export default function Projects() {
       </div>
       <div
         ref={secondProjectRef}
-        className="second_project z-10 relative flex flex-col h-[calc(100svh-5rem)] bg-gray-900 mb-28"
+        className="second_project z-10 relative flex flex-col h-[calc(100svh-5rem)] mb-28"
+        style={{
+          background: `linear-gradient(to bottom, 
+            transparent 0%, 
+            rgba(17, 24, 39, 0.2) 5%,
+            rgba(17, 24, 39, 0.5) 10%,
+            rgba(17, 24, 39, 0.8) 15%,
+            rgba(17, 24, 39, 1) 20%, 
+            rgba(17, 24, 39, 1) 80%, 
+            rgba(17, 24, 39, 0.8) 85%,
+            rgba(17, 24, 39, 0.5) 90%,
+            rgba(17, 24, 39, 0.2) 95%,
+            transparent 100%
+          )`,
+        }}
       >
         <div className="flex flex-col flex-grow justify-center items-end w-full px-24 gap-x-5">
           <div className="flex flex-col w-1/3 bg-gray-800 border-2 border-gray-700 rounded-lg">
@@ -205,7 +225,21 @@ export default function Projects() {
       </div>
       <div
         ref={thirdProjectRef}
-        className="third_project z-20 relative flex flex-col h-[calc(100svh-5rem)] bg-gray-900 mb-28"
+        className="third_project z-20 relative flex flex-col h-[calc(100svh-5rem)] mb-28"
+        style={{
+          background: `linear-gradient(to bottom, 
+            transparent 0%, 
+            rgba(17, 24, 39, 0.2) 5%,
+            rgba(17, 24, 39, 0.5) 10%,
+            rgba(17, 24, 39, 0.8) 15%,
+            rgba(17, 24, 39, 1) 20%, 
+            rgba(17, 24, 39, 1) 80%, 
+            rgba(17, 24, 39, 0.8) 85%,
+            rgba(17, 24, 39, 0.5) 90%,
+            rgba(17, 24, 39, 0.2) 95%,
+            transparent 100%
+          )`,
+        }}
       >
         <div className="flex flex-col flex-grow justify-center w-full px-24 gap-x-5">
           <div className="flex flex-col w-1/3 bg-gray-800 border-2 border-gray-700 rounded-lg">

@@ -4,7 +4,7 @@ import "./globals.css";
 export default function Footer() {
   return (
     <div className="grid w-full">
-      <div className="flex justify-self-end justify-center gap-x-5 bg-[#050A16] border-2 border-neutral-800 rounded-full w-[26rem] h-12 fixed mr-5 bottom-5 p-2">
+      <div className="z-50 fixed flex justify-self-end justify-center gap-x-5 bg-[#050A16] border-2 border-neutral-800 rounded-full w-[26rem] h-12 mr-5 bottom-5 p-2">
         <Image
           className="invert hover:cursor-pointer invert-80 transition-colors duration-200"
           src="/EmailIcon.png"

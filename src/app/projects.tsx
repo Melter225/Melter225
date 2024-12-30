@@ -269,7 +269,7 @@ export default function Projects() {
             <p className="popup-description mt-3">Description</p>
             <div className="flex w-full justify-end">
               <button className="absolute top-[1.25rem]" onClick={hidePopup}>
-                <MdClose className="text-red-600 hover:text-red-700 text-[2.5rem] transition-colors duration-200" />
+                <MdClose className="text-red-600 hover:text-red-700 text-[2.2rem] transition-colors duration-200" />
               </button>
             </div>
           </div>

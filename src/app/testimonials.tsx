@@ -1,76 +1,87 @@
 import Image from "next/image";
 
 export default function Testimonials() {
+  //testimonial scrolling resets and is not continuous
   const testimonials = [
     {
-      src: "/test1",
-      alt: "test1",
+      src: "/ProfilePicture_Example.jpg",
+      alt: "Example Profile Picture",
       name: "test1",
-      username: "test1",
-      testimonial: "test1",
+      username: "@test1",
+      testimonial:
+        "Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial",
     },
     {
-      src: "/test2",
-      alt: "test2",
+      src: "/ProfilePicture_Example.jpg",
+      alt: "Example Profile Picture",
       name: "test2",
-      username: "test2",
-      testimonial: "test2",
+      username: "@test2",
+      testimonial:
+        "Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial",
     },
     {
-      src: "/test3",
-      alt: "test3",
+      src: "/ProfilePicture_Example.jpg",
+      alt: "Example Profile Picture",
       name: "test3",
-      username: "test3",
-      testimonial: "test3",
+      username: "@test3",
+      testimonial:
+        "Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial",
     },
     {
-      src: "/test4",
-      alt: "test4",
+      src: "/ProfilePicture_Example.jpg",
+      alt: "Example Profile Picture",
       name: "test4",
-      username: "test4",
-      testimonial: "test4",
+      username: "@test4",
+      testimonial:
+        "Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial",
     },
     {
-      src: "/test5",
-      alt: "test5",
+      src: "/ProfilePicture_Example.jpg",
+      alt: "Example Profile Picture",
       name: "test5",
-      username: "test5",
-      testimonial: "test5",
+      username: "@test5",
+      testimonial:
+        "Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial",
     },
     {
-      src: "/test6",
-      alt: "test6",
+      src: "/ProfilePicture_Example.jpg",
+      alt: "Example Profile Picture",
       name: "test6",
-      username: "test6",
-      testimonial: "test6",
+      username: "@test6",
+      testimonial:
+        "Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial",
     },
     {
-      src: "/test7",
-      alt: "test7",
+      src: "/ProfilePicture_Example.jpg",
+      alt: "Example Profile Picture",
       name: "test7",
-      username: "test7",
-      testimonial: "test7",
+      username: "@test7",
+      testimonial:
+        "Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial",
     },
     {
-      src: "/test8",
-      alt: "test8",
+      src: "/ProfilePicture_Example.jpg",
+      alt: "Example Profile Picture",
       name: "test8",
-      username: "test8",
-      testimonial: "test8",
+      username: "@test8",
+      testimonial:
+        "Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial",
     },
     {
-      src: "/test9",
-      alt: "test9",
+      src: "/ProfilePicture_Example.jpg",
+      alt: "Example Profile Picture",
       name: "test9",
-      username: "test9",
-      testimonial: "test9",
+      username: "@test9",
+      testimonial:
+        "Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial",
     },
     {
-      src: "/test10",
-      alt: "test10",
+      src: "/ProfilePicture_Example.jpg",
+      alt: "Example Profile Picture",
       name: "test10",
-      username: "test10",
-      testimonial: "test10",
+      username: "@test10",
+      testimonial:
+        "Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial Testimonial",
     },
   ];
 
@@ -79,30 +90,67 @@ export default function Testimonials() {
       <div className="w-full text-center">
         <h1 className="font-semibold text-5xl">Testimonials</h1>
       </div>
-      <div className="flex w-[200rem] h-[12rem] items-center justify-center gap-x-5 my-10">
-        {testimonials.map(
-          ({ src, alt, name, username, testimonial }, index) => (
-            <div
-              key={`${index}`}
-              className="flex flex-col justify-center w-[22rem] h-[12rem] bg-neutral-800 rounded-lg shadow-lg shadow-gray-900 border-2 border-neutral-800"
-            >
-              <div className="flex flex-grow self-start items-center w-full h-[8rem] bg-gray-800 rounded-t-xl">
-                <div className="flex w-full items-center ml-6">
-                  <div className="justify-self-start ml-4">
-                    <Image src={src} alt={alt} width={20} height={20} />
-                  </div>
-                  <div className="justify-self-end ml-4">
-                    <p className="font-medium">{name}</p>
-                    <p className="font-medium text-sm italic">{username}</p>
+      <div className="inline-flex flex-nowrap w-full overflow-x-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+        <div className="row-fin flex w-[400rem] h-[22rem] items-center justify-center animate-infinite-scroll-testimonials pause hover:cursor-pointer gap-x-5 my-10">
+          {testimonials.map(
+            ({ src, alt, name, username, testimonial }, index) => (
+              <div
+                key={`${index}`}
+                className="flex flex-col justify-center w-[22rem] h-[22rem] bg-neutral-800 rounded-lg shadow-lg shadow-gray-900 border-2 border-neutral-800"
+              >
+                <div className="flex flex-grow self-start items-center w-full h-[8rem] bg-gray-800 rounded-t-xl">
+                  <div className="flex w-full items-center ml-3">
+                    <div className="justify-self-start ml-4">
+                      <Image
+                        className="rounded-full"
+                        src={src}
+                        alt={alt}
+                        width={40}
+                        height={40}
+                      />
+                    </div>
+                    <div className="justify-self-end ml-4">
+                      <p className="font-medium">{name}</p>
+                      <p className="font-medium text-sm italic">{username}</p>
+                    </div>
                   </div>
                 </div>
+                <div className="flex flex-grow self-end items-center justify-center w-full h-[14rem] bg-gray-900 px-4 rounded-b-xl">
+                  <p>{testimonial}</p>
+                </div>
               </div>
-              <div className="flex flex-grow self-end items-center justify-center w-full h-[4rem] bg-gray-900 rounded-b-xl">
-                <p>{testimonial}</p>
+            )
+          )}
+          {testimonials.map(
+            ({ src, alt, name, username, testimonial }, index) => (
+              <div
+                key={`${index}`}
+                className="flex flex-col justify-center w-[22rem] h-[22rem] bg-neutral-800 rounded-lg shadow-lg shadow-gray-900 border-2 border-neutral-800"
+              >
+                <div className="flex flex-grow self-start items-center w-full h-[8rem] bg-gray-800 rounded-t-xl">
+                  <div className="flex w-full items-center ml-3">
+                    <div className="justify-self-start ml-4">
+                      <Image
+                        className="rounded-full"
+                        src={src}
+                        alt={alt}
+                        width={40}
+                        height={40}
+                      />
+                    </div>
+                    <div className="justify-self-end ml-4">
+                      <p className="font-medium">{name}</p>
+                      <p className="font-medium text-sm italic">{username}</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex flex-grow self-end items-center justify-center w-full h-[14rem] bg-gray-900 px-4 rounded-b-xl">
+                  <p>{testimonial}</p>
+                </div>
               </div>
-            </div>
-          )
-        )}
+            )
+          )}
+        </div>
       </div>
     </div>
   );

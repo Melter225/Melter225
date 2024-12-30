@@ -15,6 +15,16 @@
   }
 }
 
-.animate-scroll {
-  animation: scroll 30s linear infinite;
+@layer components {
+  .animate-infinite-scroll-awards {
+    animation: scroll 85s linear infinite;
+  }
+
+  .animate-infinite-scroll-testimonials {
+    animation: scroll 100s linear infinite;
+  }
+
+  .pause:hover {
+    animation-play-state: paused;
+  }
 }

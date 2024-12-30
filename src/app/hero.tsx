@@ -3,6 +3,7 @@ import Image from "next/image";
 import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
+//cut down on amount of images and make the images not overlap
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const backgroundImages = [

@@ -29,7 +29,7 @@ export default function About() {
   ];
 
   return (
-    <div className="mb-28">
+    <section id="about" className="mt-28">
       <div className="w-full text-center">
         <h1 className="font-semibold text-5xl">About Me</h1>
       </div>
@@ -115,6 +115,6 @@ export default function About() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

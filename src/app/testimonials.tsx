@@ -86,7 +86,7 @@ export default function Testimonials() {
   ];
 
   return (
-    <div>
+    <section id="testimonials" className="mt-28">
       <div className="w-full text-center">
         <h1 className="font-semibold text-5xl">Testimonials</h1>
       </div>
@@ -152,6 +152,6 @@ export default function Testimonials() {
           )}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

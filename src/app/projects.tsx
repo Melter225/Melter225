@@ -154,7 +154,7 @@ export default function Projects() {
   }, []);
 
   return (
-    <div>
+    <section id="projects" className="mt-28">
       <div className="project_title relative z-30 w-full text-center mb-6">
         <h1 className="font-semibold text-5xl">Projects</h1>
       </div>
@@ -225,7 +225,7 @@ export default function Projects() {
       </div>
       <div
         ref={thirdProjectRef}
-        className="third_project z-20 relative flex flex-col h-[calc(100svh-5rem)] mb-28"
+        className="third_project z-20 relative flex flex-col h-[calc(100svh-5rem)]"
         style={{
           background: `linear-gradient(to bottom, 
             transparent 0%, 
@@ -275,6 +275,6 @@ export default function Projects() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

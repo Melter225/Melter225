@@ -6,6 +6,36 @@ import { SunIcon, MoonIcon } from "@heroicons/react/24/solid";
 
 export default function Header() {
   const { theme, toggleTheme } = useTheme();
+  const navItems = [
+    { id: "home", label: "Home" },
+    { id: "awards", label: "Awards" },
+    { id: "about", label: "About" },
+    { id: "projects", label: "Projects" },
+    { id: "testimonials", label: "Testimonials" },
+    { id: "contact", label: "Contact" },
+  ];
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const rem = parseFloat(
+        getComputedStyle(document.documentElement).fontSize
+      );
+      if (sectionId != "contact") {
+        const offsetTop = element.offsetTop - 6 * rem;
+        window.scrollTo({
+          top: offsetTop,
+          behavior: "smooth",
+        });
+      } else if (sectionId === "contact") {
+        const offsetTop = element.offsetTop + 2 * rem;
+        window.scrollTo({
+          top: offsetTop,
+          behavior: "smooth",
+        });
+      }
+    }
+  };
 
   return (
     <div className="flex z-50 fixed w-full h-20 items-center bg-gray-950/50 shadow-lg backdrop-blur-md border-2 border-gray-950 border-b-neutral-800">
@@ -18,27 +48,16 @@ export default function Header() {
         />
       </div>
       <div className="flex mx-auto justify-center items-center gap-x-8 rounded-full border-2 border-neutral-800 w-[45rem] h-10">
-        <div>
-          <p className="hover:cursor-pointer hover:text-300">Home</p>
-        </div>
-        <div>
-          <p className="hover:cursor-pointer hover:text-300">Awards</p>
-        </div>
-        <div>
-          <p className="hover:cursor-pointer hover:text-300">About</p>
-        </div>
-        <div>
-          <p className="hover:cursor-pointer hover:text-300">Statistics</p>
-        </div>
-        <div>
-          <p className="hover:cursor-pointer hover:text-300">Projects</p>
-        </div>
-        <div>
-          <p className="hover:cursor-pointer hover:text-300">Testimonials</p>
-        </div>
-        <div>
-          <p className="hover:cursor-pointer hover:text-300">Contact</p>
-        </div>
+        {navItems.map(({ id, label }) => (
+          <div key={id}>
+            <p
+              onClick={() => scrollToSection(id)}
+              className="hover:cursor-pointer hover:text-300"
+            >
+              {label}
+            </p>
+          </div>
+        ))}
       </div>
       <div className="mr-5">
         <button

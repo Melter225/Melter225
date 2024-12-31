@@ -8,6 +8,7 @@ import Contact from "./contact.tsx";
 import Footer from "./footer.tsx";
 import Copyright from "./copyright.tsx";
 
+//light/dark mode, reactivity
 export default function PersonalPortfolio() {
   return (
     <div className="scrollbar-hide">

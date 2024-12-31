@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { NextRequest, NextResponse } from "next/server";
 
 interface EmailAddress {
@@ -44,9 +44,9 @@ async function refreshAccessToken() {
     );
 
     return response.data.access_token;
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Error refreshing token:", error);
-    if (error.response) {
+    if (error instanceof AxiosError && error.response) {
       console.error("Response data:", error.response.data);
     }
     throw new Error("Failed to refresh access token");
@@ -69,8 +69,8 @@ async function sendEmailWithRetry(
         },
       }
     );
-  } catch (error) {
-    if (error.response?.status === 401) {
+  } catch (error: unknown) {
+    if (error instanceof AxiosError && error.response?.status === 401) {
       const newToken = await refreshAccessToken();
       await axios.post(
         `https://graph.microsoft.com/v1.0/users/${process.env.EMAIL_USER}/sendMail`,
@@ -153,7 +153,7 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     console.error("Error sending email:", error);
 
-    if (error.response?.data?.error) {
+    if (error instanceof AxiosError && error.response?.data?.error) {
       return NextResponse.json(
         { error: error.response.data.error.message },
         { status: error.response.status }

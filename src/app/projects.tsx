@@ -73,10 +73,10 @@ export default function Projects() {
       const potentialTitleTop = titleTop - e.deltaY;
 
       const secondProjectTop = secondProject.getBoundingClientRect().top;
-      const potentialSecondTop = secondProjectTop - e.deltaY - rem * 4.5;
+      const potentialSecondTop = secondProjectTop - e.deltaY - rem * 3.5;
 
       const thirdProjectTop = thirdProject.getBoundingClientRect().top;
-      const potentialThirdTop = thirdProjectTop - e.deltaY - rem * 1;
+      const potentialThirdTop = thirdProjectTop - e.deltaY;
       const thirdProjectBottom = thirdProject.getBoundingClientRect().bottom;
 
       if (
@@ -155,12 +155,12 @@ export default function Projects() {
 
   return (
     <section id="projects" className="mt-28">
-      <div className="project_title relative z-30 w-full text-center mb-6">
+      <div className="project_title relative z-30 w-full text-center">
         <h1 className="font-semibold text-5xl">Projects</h1>
       </div>
       <div className="first_project relative flex flex-col h-[calc(100svh-5rem)] mb-28">
-        <div className="flex flex-col flex-grow justify-center w-full px-24 gap-x-5">
-          <div className="flex flex-col w-1/3 bg-gray-800 border-2 border-gray-700 rounded-lg">
+        <div className="flex flex-col flex-grow justify-center w-full px-6 sm:px-12 lg:px-24 gap-x-5">
+          <div className="flex flex-col w-3/4 sm:w-1/2 lg:w-1/3 bg-gray-800 border-2 border-gray-700 rounded-lg">
             <p className="text-[1.65rem] font-bold pt-5 pl-5">DevX</p>
             <p className="px-5 pt-2 pb-5 text-transparent bg-clip-text bg-gradient-to-b from-gray-200 to-transparent">
               Description Description Description Description Description
@@ -200,8 +200,8 @@ export default function Projects() {
           )`,
         }}
       >
-        <div className="flex flex-col flex-grow justify-center items-end w-full px-24 gap-x-5">
-          <div className="flex flex-col w-1/3 bg-gray-800 border-2 border-gray-700 rounded-lg">
+        <div className="flex flex-col flex-grow justify-center items-end w-full px-6 sm:px-12 lg:px-24 gap-x-5">
+          <div className="flex flex-col w-3/4 sm:w-1/2 lg:w-1/3 bg-gray-800 border-2 border-gray-700 rounded-lg">
             <p className="text-[1.65rem] font-bold pt-5 pl-5">Quix</p>
             <p className="px-5 pt-2 pb-5 text-transparent bg-clip-text bg-gradient-to-b from-gray-200 to-transparent">
               Description Description Description Description Description
@@ -241,8 +241,8 @@ export default function Projects() {
           )`,
         }}
       >
-        <div className="flex flex-col flex-grow justify-center w-full px-24 gap-x-5">
-          <div className="flex flex-col w-1/3 bg-gray-800 border-2 border-gray-700 rounded-lg">
+        <div className="flex flex-col flex-grow justify-center w-full px-6 sm:px-12 lg:px-24 gap-x-5">
+          <div className="flex flex-col w-3/4 sm:w-1/2 lg:w-1/3 bg-gray-800 border-2 border-gray-700 rounded-lg">
             <p className="text-[1.65rem] font-bold pt-5 pl-5">Cibar</p>
             <p className="px-5 pt-2 pb-5 text-transparent bg-clip-text bg-gradient-to-b from-gray-200 to-transparent">
               Description Description Description Description Description

@@ -33,10 +33,10 @@ export default function About() {
       <div className="w-full text-center">
         <h1 className="font-semibold text-5xl">About Me</h1>
       </div>
-      <div className="flex w-full px-24 mt-10">
+      <div className="flex w-full px-6 sm:px-12 lg:px-24 mt-10">
         <div className="flex flex-col w-full bg-gray-800 border-2 border-gray-700 rounded-lg">
           <p className="pl-5 pt-5 text-2xl font-semibold">About</p>
-          <p className="p-5">
+          <p className="text-sm lg:text-base p-5">
             I&apos;m Rohan Mahapatra, a passionate coder with a love for
             creating and problem-solving. My journey into the world of
             technology began early, thanks to the guidance of my grandfather,
@@ -79,27 +79,29 @@ export default function About() {
           </p>
         </div>
       </div>
-      <div className="flex flex-row w-full gap-x-5 px-24 mt-5">
+      <div className="flex flex-row w-full gap-x-5 px-6 sm:px-12 lg:px-24 mt-5">
         <div className="flex flex-col w-1/2 justify-center bg-gray-800 border-2 border-gray-700 rounded-lg">
-          <p className="pl-5 pt-5 text-2xl font-semibold">Projects Created</p>
-          <p className="pl-5 py-5 text-4xl font-semibold">111</p>
+          <p className="px-5 pt-[0.875rem] lg:pt-4 text-xl lg:text-2xl font-semibold">
+            Projects Created
+          </p>
+          <p className="pl-5 py-5 text-3xl lg:text-4xl font-semibold">111</p>
         </div>
         <div className="flex flex-col w-1/2 bg-gray-800 border-2 border-gray-700 rounded-lg">
-          <p className="pl-5 pt-5 text-2xl font-semibold">
+          <p className="px-5 pt-4 text-xl lg:text-2xl font-semibold">
             Years of Experience
           </p>
-          <p className="pl-5 py-5 text-4xl font-semibold">6</p>
+          <p className="pl-5 py-5 text-3xl lg:text-4xl font-semibold">6</p>
           <div className="grid">
-            <p className="absolute self-end justify-self-end text-lg pr-5 pb-5">
+            <p className="absolute self-end justify-self-end text-sm xs:text-base lg:text-lg pr-4 lg:pr-5 pb-2 lg:pb-5">
               Since 2018
             </p>
           </div>
         </div>
       </div>
-      <div className="flex w-full px-24 mt-5">
+      <div className="flex w-full px-6 sm:px-12 lg:px-24 mt-5">
         <div className="flex flex-col text-center w-full bg-gray-800 border-2 border-gray-700 rounded-lg">
           <p className="pl-5 pt-5 text-2xl font-semibold">Languages & Tools</p>
-          <div className="grid grid-cols-6 gap-x-10 gap-y-3 p-5 mt-5">
+          <div className="grid grid-cols-6 gap-x-10 gap-y-3 px-3 py-5 sm:p-5 mt-5">
             {languages.map(({ src, alt, width, height }, index) => (
               <div className="flex flex-col items-center" key={`${index}`}>
                 <Image
@@ -109,7 +111,9 @@ export default function About() {
                   width={width}
                   height={height}
                 />
-                <p>{alt}</p>
+                <p className="hidden sm2:block text-xs sm:text-sm lg:text-base">
+                  {alt}
+                </p>
               </div>
             ))}
           </div>

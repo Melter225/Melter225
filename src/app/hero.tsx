@@ -1,11 +1,12 @@
 "use client";
 import Image from "next/image";
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
 //cut down on amount of images and make the images not overlap
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [iconCount, setIconCount] = useState(550);
   const backgroundImages = [
     { src: "/PersonalLogo.png", alt: "Personal Logo" },
     { src: "/CodeIcon.png", alt: "Code Icon" },
@@ -41,6 +42,28 @@ export default function Hero() {
     const updatedDelay = 2 + index * 0.07;
     return updatedDelay;
   };
+
+  useEffect(() => {
+    const updateIconCount = () => {
+      if (window.innerWidth < 480) {
+        setIconCount(200);
+      } else if (window.innerWidth < 640) {
+        setIconCount(275);
+      } else if (window.innerWidth < 768) {
+        setIconCount(375);
+      } else if (window.innerWidth < 1024) {
+        setIconCount(475);
+      } else {
+        setIconCount(550);
+      }
+    };
+
+    updateIconCount();
+
+    window.addEventListener("resize", updateIconCount);
+
+    return () => window.removeEventListener("resize", updateIconCount);
+  }, []);
 
   useEffect(() => {
     const handleScroll = (e: WheelEvent) => {
@@ -80,7 +103,7 @@ export default function Hero() {
         {/* <p>Placeholder for hero</p> */}
         <div className="relative h-[45.5rem] overflow-y-auto mt-20 scrollbar-hide scroll-smooth">
           <div className="background-text absolute w-full h-[91rem] overflow-hidden scroll-smooth">
-            {Array.from({ length: 550 }).map((_, index) => {
+            {Array.from({ length: iconCount }).map((_, index) => {
               const randomIndex = Math.floor(
                 Math.random() * backgroundImages.length
               );
@@ -108,7 +131,7 @@ export default function Hero() {
                     alt={`${backgroundImages[randomIndex].alt}`}
                     width={randomSize}
                     height={randomSize}
-                    className="blur-[1px] opacity-[0.4] mix-blend-difference filter contrast-125 brightness-90 hover:opacity-[0.6] hover:cursor-pointer transition-opacity duration-200 ease-in-out"
+                    className="blur-[1px] opacity-[0.3] mix-blend-difference filter contrast-125 brightness-90 hover:opacity-[0.5] hover:cursor-pointer transition-opacity duration-200 ease-in-out"
                   ></Image>
                 </motion.div>
               );
@@ -116,9 +139,9 @@ export default function Hero() {
           </div>
         </div>
         <div className="mt-[-29.2rem] z-10">
-          <div className="flex flex-col items-center justify-center mb-2">
+          <div className="flex flex-col items-center justify-center text-center mb-2">
             <motion.h1
-              className="text-5xl sm:text-6xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-500"
+              className="text-[3.25rem] sm:text-6xl md:text-7xl !leading-[1.2] font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-500"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 1.25, ease: "easeIn" }}
@@ -129,7 +152,7 @@ export default function Hero() {
           <div className="flex justify-center">
             <div>
               <motion.span
-                className="flex absolute border w-fit mx-auto py-4 text-center blur-xl box-content text-4xl sm:text-5xl md:text-6xl !leading-[5.5rem] font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 select-none"
+                className="flex absolute border w-fit mx-auto py-4 text-center blur-xl box-content text-[2.5rem] sm:text-5xl md:text-6xl !leading-[1.3] font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 select-none"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
@@ -137,7 +160,7 @@ export default function Hero() {
                 Remaking the digital experience
               </motion.span>
               <motion.h1
-                className="flex relative top-0 w-fit h-auto py-4 items-center justify-center text-center text-4xl sm:text-5xl md:text-6xl !leading-[5.5rem] font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 select-auto"
+                className="flex relative top-0 w-fit h-auto py-4 items-center justify-center text-center text-[2.5rem] sm:text-5xl md:text-6xl !leading-[1.3] font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 select-auto"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}

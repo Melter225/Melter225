@@ -13,6 +13,11 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      screens: {
+        xxs: "320px",
+        xs: "480px",
+        sm2: "580px",
+      },
     },
   },
   plugins: [scrollbarHide],

@@ -113,7 +113,7 @@ export default function Contact() {
 
   return (
     <section id="contact">
-      <div className="grid w-full px-24">
+      <div className="grid w-full px-6 sm:px-12 lg:px-24">
         <div className="isolate px-6 pt-24 pb-8 sm:pt-32 sm:pb-10 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-balance text-5xl font-semibold tracking-tight">

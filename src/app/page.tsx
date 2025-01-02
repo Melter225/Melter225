@@ -1,5 +1,5 @@
 import Header from "./header.tsx";
-import Hero from "./hero.tsx";
+// import Hero from "./hero.tsx";
 import Awards from "./awards.tsx";
 import About from "./about.tsx";
 import Projects from "./projects.tsx";
@@ -13,7 +13,7 @@ export default function PersonalPortfolio() {
   return (
     <div className="scrollbar-hide">
       <Header />
-      <Hero />
+      {/* <Hero /> */}
       <Awards />
       <About />
       <Projects />

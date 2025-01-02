@@ -1,7 +1,10 @@
+"use client";
+
 import Image from "next/image";
+import { useTheme } from "../../contexts/themeContext.tsx";
 
 export default function Testimonials() {
-  //testimonial scrolling resets and is not continuous
+  const { theme } = useTheme();
   const testimonials = [
     {
       src: "/ProfilePicture_Example.jpg",
@@ -96,13 +99,23 @@ export default function Testimonials() {
             ({ src, alt, name, username, testimonial }, index) => (
               <div
                 key={`${index}`}
-                className="flex flex-col justify-center w-[22rem] h-[22rem] bg-neutral-800 rounded-lg shadow-lg shadow-gray-900 border-2 border-neutral-800"
+                className={`flex flex-col justify-center w-[22rem] h-[22rem] bg-neutral-800 rounded-lg shadow-lg ${
+                  theme === "dark" ? "shadow-gray-900" : "shadow-gray-300"
+                } border-2 ${
+                  theme === "dark" ? "border-neutral-800" : "border-neutral-400"
+                }`}
               >
-                <div className="flex flex-grow self-start items-center w-full h-[8rem] bg-gray-800 rounded-t-xl">
+                <div
+                  className={`flex flex-grow self-start items-center w-full h-[8rem] ${
+                    theme === "dark" ? "bg-gray-800" : "bg-gray-100"
+                  } rounded-t-lg`}
+                >
                   <div className="flex w-full items-center ml-3">
                     <div className="justify-self-start ml-4">
                       <Image
-                        className="rounded-full"
+                        className={`${
+                          theme === "dark" ? "invert-0" : "invert"
+                        } rounded-full`}
                         src={src}
                         alt={alt}
                         width={40}
@@ -115,7 +128,11 @@ export default function Testimonials() {
                     </div>
                   </div>
                 </div>
-                <div className="flex flex-grow self-end items-center justify-center w-full h-[14rem] bg-gray-900 px-4 rounded-b-xl">
+                <div
+                  className={`flex flex-grow self-end items-center justify-center w-full h-[14rem] ${
+                    theme === "dark" ? "bg-gray-900" : "bg-gray-200"
+                  } px-4 rounded-b-lg`}
+                >
                   <p>{testimonial}</p>
                 </div>
               </div>
@@ -125,13 +142,23 @@ export default function Testimonials() {
             ({ src, alt, name, username, testimonial }, index) => (
               <div
                 key={`${index}`}
-                className="flex flex-col justify-center w-[22rem] h-[22rem] bg-neutral-800 rounded-lg shadow-lg shadow-gray-900 border-2 border-neutral-800"
+                className={`flex flex-col justify-center w-[22rem] h-[22rem] bg-neutral-800 rounded-lg shadow-lg ${
+                  theme === "dark" ? "shadow-gray-900" : "shadow-gray-300"
+                } border-2 ${
+                  theme === "dark" ? "border-neutral-800" : "border-neutral-400"
+                }`}
               >
-                <div className="flex flex-grow self-start items-center w-full h-[8rem] bg-gray-800 rounded-t-xl">
+                <div
+                  className={`flex flex-grow self-start items-center w-full h-[8rem] ${
+                    theme === "dark" ? "bg-gray-800" : "bg-gray-100"
+                  } rounded-t-lg`}
+                >
                   <div className="flex w-full items-center ml-3">
                     <div className="justify-self-start ml-4">
                       <Image
-                        className="rounded-full"
+                        className={`${
+                          theme === "dark" ? "invert-0" : "invert"
+                        } rounded-full`}
                         src={src}
                         alt={alt}
                         width={40}
@@ -144,7 +171,11 @@ export default function Testimonials() {
                     </div>
                   </div>
                 </div>
-                <div className="flex flex-grow self-end items-center justify-center w-full h-[14rem] bg-gray-900 px-4 rounded-b-xl">
+                <div
+                  className={`flex flex-grow self-end items-center justify-center w-full h-[14rem] ${
+                    theme === "dark" ? "bg-gray-900" : "bg-gray-200"
+                  } px-4 rounded-b-lg`}
+                >
                   <p>{testimonial}</p>
                 </div>
               </div>

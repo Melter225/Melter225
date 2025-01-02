@@ -1,22 +1,23 @@
 "use client";
-
-import { useTheme } from "../../hooks/useTheme";
+import { useTheme } from "../../contexts/themeContext.tsx";
 
 interface ThemeProviderProps {
   children: React.ReactNode;
   poppinsClass: string;
 }
 
-export function ThemeProvider({ children, poppinsClass }: ThemeProviderProps) {
+export function ThemeLayoutProvider({
+  children,
+  poppinsClass,
+}: ThemeProviderProps) {
   const { theme } = useTheme();
-  console.log(theme);
 
   return (
     <body
       className={`${poppinsClass} ${
         theme === "dark"
-          ? "bg-gray-950 text-gray-200"
-          : "bg-gray-200 text-gray-950"
+          ? "bg-gray-950 text-gray-50"
+          : "bg-gray-50 text-gray-950"
       }`}
     >
       {children}

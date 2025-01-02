@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import { ThemeProvider } from "./theme.tsx";
+import { ThemeProvider } from "../../contexts/themeContext.tsx";
+import { ThemeLayoutProvider } from "./theme.tsx";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -22,7 +23,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <ThemeProvider poppinsClass={poppins.className}>{children}</ThemeProvider>
+      <ThemeProvider>
+        <ThemeLayoutProvider poppinsClass={poppins.className}>
+          {children}
+        </ThemeLayoutProvider>
+      </ThemeProvider>
     </html>
   );
 }

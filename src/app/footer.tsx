@@ -1,30 +1,33 @@
+"use client";
+
 import Image from "next/image";
 import "./globals.css";
-
-interface SocialLinkProps {
-  href: string;
-  src: string;
-  alt: string;
-}
-
-const SocialLink: React.FC<SocialLinkProps> = ({ href, src, alt }) => (
-  <a
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="hover:opacity-80 transition-opacity duration-200"
-  >
-    <Image
-      className="invert hover:cursor-pointer invert-80 transition-colors duration-200"
-      src={src}
-      alt={alt}
-      width={28}
-      height={28}
-    />
-  </a>
-);
+import { useTheme } from "../../contexts/themeContext.tsx";
 
 export default function Footer() {
+  interface SocialLinkProps {
+    href: string;
+    src: string;
+    alt: string;
+  }
+
+  const SocialLink: React.FC<SocialLinkProps> = ({ href, src, alt }) => (
+    <a href={href} target="_blank" rel="noopener noreferrer">
+      <Image
+        className={`${
+          theme === "dark" ? "invert" : "invert-10"
+        } hover:cursor-pointer ${
+          theme === "dark" ? "invert-80" : "hover:invert-0"
+        } transition-colors duration-200`}
+        src={src}
+        alt={alt}
+        width={28}
+        height={28}
+      />
+    </a>
+  );
+
+  const { theme } = useTheme();
   const socialLinks: SocialLinkProps[] = [
     {
       href: "mailto:email@rohanmahapatra.com",
@@ -70,7 +73,13 @@ export default function Footer() {
 
   return (
     <div className="grid w-full">
-      <div className="z-50 fixed flex justify-self-end justify-center gap-x-6 bg-[#050A16] border-2 border-neutral-800 rounded-full w-[20rem] h-12 mr-5 bottom-5 p-2">
+      <div
+        className={`z-50 fixed flex justify-self-end justify-center gap-x-6 ${
+          theme === "dark" ? "bg-[#050A16]" : "bg-[#e9eee6]"
+        } border-2 ${
+          theme === "dark" ? "border-neutral-800" : "border-neutral-400"
+        } rounded-full w-[20rem] h-12 mr-5 bottom-5 p-2`}
+      >
         {socialLinks.map((link) => (
           <SocialLink
             key={link.alt}

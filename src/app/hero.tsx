@@ -1,10 +1,13 @@
 "use client";
+
 import Image from "next/image";
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import { useTheme } from "../../contexts/themeContext.tsx";
 
 //cut down on amount of images and make the images not overlap
 export default function Hero() {
+  const { theme } = useTheme();
   const containerRef = useRef<HTMLDivElement>(null);
   const [iconCount, setIconCount] = useState(550);
   const backgroundImages = [

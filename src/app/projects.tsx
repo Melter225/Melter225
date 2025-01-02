@@ -3,10 +3,38 @@
 // import Image from "next/image";
 import React, { useEffect, useRef } from "react";
 import { MdClose } from "react-icons/md";
+import { useTheme } from "../../contexts/themeContext.tsx";
 
 export default function Projects() {
+  const { theme } = useTheme();
   const secondProjectRef = useRef<HTMLDivElement>(null);
   const thirdProjectRef = useRef<HTMLDivElement>(null);
+
+  const darkGradient = `linear-gradient(to bottom,
+    transparent 0%,
+    rgba(17, 24, 39, 0.2) 5%,
+    rgba(17, 24, 39, 0.5) 10%,
+    rgba(17, 24, 39, 0.8) 15%,
+    rgba(17, 24, 39, 1) 20%,
+    rgba(17, 24, 39, 1) 80%,
+    rgba(17, 24, 39, 0.8) 85%,
+    rgba(17, 24, 39, 0.5) 90%,
+    rgba(17, 24, 39, 0.2) 95%,
+    transparent 100%
+  )`;
+
+  const lightGradient = `linear-gradient(to bottom,
+    transparent 0%,
+    rgba(209, 213, 219, 0.2) 5%,
+    rgba(209, 213, 219, 0.5) 10%,
+    rgba(209, 213, 219, 0.8) 15%,
+    rgba(209, 213, 219, 1) 20%,
+    rgba(209, 213, 219, 1) 80%,
+    rgba(209, 213, 219, 0.8) 85%,
+    rgba(209, 213, 219, 0.5) 90%,
+    rgba(209, 213, 219, 0.2) 95%,
+    transparent 100%
+  )`;
 
   const projects = [
     {
@@ -160,9 +188,21 @@ export default function Projects() {
       </div>
       <div className="first_project relative flex flex-col h-[calc(100svh-5rem)] mb-28">
         <div className="flex flex-col flex-grow justify-center w-full px-6 sm:px-12 lg:px-24 gap-x-5">
-          <div className="flex flex-col w-3/4 sm:w-1/2 lg:w-1/3 bg-gray-800 border-2 border-gray-700 rounded-lg">
+          <div
+            className={`flex flex-col w-3/4 sm:w-1/2 lg:w-1/3 ${
+              theme === "dark" ? "bg-gray-800" : "bg-gray-200"
+            } border-2 ${
+              theme === "dark" ? "border-gray-700" : "border-gray-300"
+            } rounded-lg`}
+          >
             <p className="text-[1.65rem] font-bold pt-5 pl-5">DevX</p>
-            <p className="px-5 pt-2 pb-5 text-transparent bg-clip-text bg-gradient-to-b from-gray-200 to-transparent">
+            <p
+              className={`px-5 pt-2 pb-5 text-transparent bg-clip-text bg-gradient-to-b ${
+                theme === "dark"
+                  ? "from-gray-200 to-transparent"
+                  : "from-gray-800 to-transparent"
+              }`}
+            >
               Description Description Description Description Description
               Description Description Description Description Description
               Description Description Description Description Description
@@ -186,24 +226,25 @@ export default function Projects() {
         ref={secondProjectRef}
         className="second_project z-10 relative flex flex-col h-[calc(100svh-5rem)] mb-28"
         style={{
-          background: `linear-gradient(to bottom, 
-            transparent 0%, 
-            rgba(17, 24, 39, 0.2) 5%,
-            rgba(17, 24, 39, 0.5) 10%,
-            rgba(17, 24, 39, 0.8) 15%,
-            rgba(17, 24, 39, 1) 20%, 
-            rgba(17, 24, 39, 1) 80%, 
-            rgba(17, 24, 39, 0.8) 85%,
-            rgba(17, 24, 39, 0.5) 90%,
-            rgba(17, 24, 39, 0.2) 95%,
-            transparent 100%
-          )`,
+          background: theme === "dark" ? darkGradient : lightGradient,
         }}
       >
         <div className="flex flex-col flex-grow justify-center items-end w-full px-6 sm:px-12 lg:px-24 gap-x-5">
-          <div className="flex flex-col w-3/4 sm:w-1/2 lg:w-1/3 bg-gray-800 border-2 border-gray-700 rounded-lg">
+          <div
+            className={`flex flex-col w-3/4 sm:w-1/2 lg:w-1/3 ${
+              theme === "dark" ? "bg-gray-800" : "bg-gray-200"
+            } border-2 ${
+              theme === "dark" ? "border-gray-700" : "border-gray-300"
+            } rounded-lg`}
+          >
             <p className="text-[1.65rem] font-bold pt-5 pl-5">Quix</p>
-            <p className="px-5 pt-2 pb-5 text-transparent bg-clip-text bg-gradient-to-b from-gray-200 to-transparent">
+            <p
+              className={`px-5 pt-2 pb-5 text-transparent bg-clip-text bg-gradient-to-b ${
+                theme === "dark"
+                  ? "from-gray-200 to-transparent"
+                  : "from-gray-800 to-transparent"
+              }`}
+            >
               Description Description Description Description Description
               Description Description Description Description Description
               Description Description Description Description Description
@@ -227,24 +268,26 @@ export default function Projects() {
         ref={thirdProjectRef}
         className="third_project z-20 relative flex flex-col h-[calc(100svh-5rem)]"
         style={{
-          background: `linear-gradient(to bottom, 
-            transparent 0%, 
-            rgba(17, 24, 39, 0.2) 5%,
-            rgba(17, 24, 39, 0.5) 10%,
-            rgba(17, 24, 39, 0.8) 15%,
-            rgba(17, 24, 39, 1) 20%, 
-            rgba(17, 24, 39, 1) 80%, 
-            rgba(17, 24, 39, 0.8) 85%,
-            rgba(17, 24, 39, 0.5) 90%,
-            rgba(17, 24, 39, 0.2) 95%,
-            transparent 100%
-          )`,
+          background: theme === "dark" ? darkGradient : lightGradient,
         }}
       >
         <div className="flex flex-col flex-grow justify-center w-full px-6 sm:px-12 lg:px-24 gap-x-5">
-          <div className="flex flex-col w-3/4 sm:w-1/2 lg:w-1/3 bg-gray-800 border-2 border-gray-700 rounded-lg">
+          <div
+            className={`flex flex-col w-3/4 sm:w-1/2 lg:w-1/3 ${
+              theme === "dark" ? "bg-gray-800" : "bg-gray-200"
+            } border-2 ${
+              theme === "dark" ? "border-gray-700" : "border-gray-300"
+            } rounded-lg`}
+          >
             <p className="text-[1.65rem] font-bold pt-5 pl-5">Cibar</p>
-            <p className="px-5 pt-2 pb-5 text-transparent bg-clip-text bg-gradient-to-b from-gray-200 to-transparent">
+            <p
+              className={`px-5 pt-2 pb-5 text-transparent bg-clip-text bg-gradient-to-b ${
+                theme === "dark"
+                  ? "from-gray-200 to-transparent"
+                  : "from-gray-800 to-transparent"
+              }
+              `}
+            >
               Description Description Description Description Description
               Description Description Description Description Description
               Description Description Description Description Description

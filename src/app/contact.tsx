@@ -2,6 +2,7 @@
 
 import { ChevronDownIcon } from "@heroicons/react/16/solid";
 import { useState } from "react";
+import { useTheme } from "../../contexts/themeContext.tsx";
 
 type FormErrors = {
   firstName?: string;
@@ -12,6 +13,7 @@ type FormErrors = {
 };
 
 export default function Contact() {
+  const { theme } = useTheme();
   const [errors, setErrors] = useState<FormErrors>({});
 
   const validateEmail = (email: string): boolean => {
@@ -119,7 +121,11 @@ export default function Contact() {
             <h2 className="text-balance text-5xl font-semibold tracking-tight">
               Contact Me
             </h2>
-            <p className="mt-2 text-lg/8 text-gray-400">
+            <p
+              className={`mt-2 text-lg/8 ${
+                theme === "dark" ? "text-gray-400" : "text-gray-600"
+              }`}
+            >
               Fill out the form below to get in touch with me
             </p>
           </div>
@@ -144,9 +150,23 @@ export default function Contact() {
                     type="text"
                     autoComplete="given-name"
                     placeholder="John"
-                    className={`block w-full rounded-md bg-gray-800 px-3.5 py-2 text-base text-gray-200 outline outline-1 -outline-offset-1 ${
-                      errors.firstName ? "outline-red-500" : "outline-gray-700"
-                    } placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-blue-400`}
+                    className={`block w-full rounded-md ${
+                      theme === "dark" ? "bg-gray-800" : "bg-gray-200"
+                    } px-3.5 py-2 text-base ${
+                      theme === "dark" ? "text-gray-200" : "text-gray-800"
+                    } outline outline-1 -outline-offset-1 ${
+                      errors.firstName
+                        ? "outline-red-500"
+                        : `${
+                            theme === "dark"
+                              ? "outline-gray-700"
+                              : "outline-gray-300"
+                          }`
+                    } ${
+                      theme === "dark"
+                        ? "placeholder:text-gray-400"
+                        : "placeholder:text-gray-600"
+                    } focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-blue-400`}
                   />
                   <ErrorMessage message={errors.firstName} />
                 </div>
@@ -165,9 +185,23 @@ export default function Contact() {
                     type="text"
                     autoComplete="family-name"
                     placeholder="Doe"
-                    className={`block w-full rounded-md bg-gray-800 px-3.5 py-2 text-base text-gray-200 outline outline-1 -outline-offset-1 ${
-                      errors.lastName ? "outline-red-500" : "outline-gray-700"
-                    } placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-blue-400`}
+                    className={`block w-full rounded-md ${
+                      theme === "dark" ? "bg-gray-800" : "bg-gray-200"
+                    } px-3.5 py-2 text-base ${
+                      theme === "dark" ? "text-gray-200" : "text-gray-800"
+                    } outline outline-1 -outline-offset-1 ${
+                      errors.firstName
+                        ? "outline-red-500"
+                        : `${
+                            theme === "dark"
+                              ? "outline-gray-700"
+                              : "outline-gray-300"
+                          }`
+                    } ${
+                      theme === "dark"
+                        ? "placeholder:text-gray-400"
+                        : "placeholder:text-gray-600"
+                    } focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-blue-400`}
                   />
                   <ErrorMessage message={errors.lastName} />
                 </div>
@@ -186,9 +220,23 @@ export default function Contact() {
                     type="email"
                     autoComplete="email"
                     placeholder="example@gmail.com"
-                    className={`block w-full rounded-md bg-gray-800 px-3.5 py-2 text-base text-gray-200 outline outline-1 -outline-offset-1 ${
-                      errors.email ? "outline-red-500" : "outline-gray-700"
-                    } placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-blue-400`}
+                    className={`block w-full rounded-md ${
+                      theme === "dark" ? "bg-gray-800" : "bg-gray-200"
+                    } px-3.5 py-2 text-base ${
+                      theme === "dark" ? "text-gray-200" : "text-gray-800"
+                    } outline outline-1 -outline-offset-1 ${
+                      errors.firstName
+                        ? "outline-red-500"
+                        : `${
+                            theme === "dark"
+                              ? "outline-gray-700"
+                              : "outline-gray-300"
+                          }`
+                    } ${
+                      theme === "dark"
+                        ? "placeholder:text-gray-400"
+                        : "placeholder:text-gray-600"
+                    } focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-blue-400`}
                   />
                   <ErrorMessage message={errors.email} />
                 </div>
@@ -203,7 +251,13 @@ export default function Contact() {
                 <div className="mt-2.5">
                   <div
                     className={`flex rounded-md bg-gray-800 outline outline-1 -outline-offset-1 ${
-                      errors.phone ? "outline-red-500" : "outline-gray-700"
+                      errors.phone
+                        ? "outline-red-500"
+                        : `${
+                            theme === "dark"
+                              ? "outline-gray-700"
+                              : "outline-gray-300"
+                          }`
                     } has-[input:focus-within]:outline has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2 has-[input:focus-within]:outline-blue-400`}
                   >
                     <div className="grid grid-cols-1 focus-within:relative">
@@ -212,7 +266,15 @@ export default function Contact() {
                         name="country"
                         autoComplete="country"
                         aria-label="Country"
-                        className="w-full col-start-1 row-start-1 appearance-none rounded-l-md py-2 pl-3.5 mr-[-0.5rem] text-base bg-gray-800 text-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-blue-400 hover:cursor-pointer"
+                        className={`w-full col-start-1 row-start-1 appearance-none rounded-l-md py-2 pl-3.5 mr-[-0.5rem] text-base ${
+                          theme === "dark" ? "bg-gray-800" : "bg-gray-200"
+                        } ${
+                          theme === "dark" ? "text-gray-300" : "text-gray-700"
+                        } ${
+                          theme === "dark"
+                            ? "placeholder:text-gray-400"
+                            : "placeholder:text-gray-600"
+                        } focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-blue-400 hover:cursor-pointer`}
                       >
                         <option value="US">United States (+1)</option>
                         <option value="CA">Canada (+1)</option>
@@ -252,7 +314,9 @@ export default function Contact() {
                       </select>
                       <ChevronDownIcon
                         aria-hidden="true"
-                        className="pointer-events-none col-start-1 row-start-1 mr-[0.45rem] size-5 self-center justify-self-end text-gray-300 sm:size-4"
+                        className={`pointer-events-none col-start-1 row-start-1 mr-[0.45rem] size-5 self-center justify-self-end ${
+                          theme === "dark" ? "text-gray-300" : "text-gray-700"
+                        } sm:size-4`}
                       />
                     </div>
                     <input
@@ -260,7 +324,15 @@ export default function Contact() {
                       name="phone-number"
                       type="tel"
                       placeholder="(123) 456-7890"
-                      className="block min-w-0 grow py-1.5 pl-[0.35rem] pr-3 text-base bg-gray-800 text-gray-200 placeholder:text-gray-400 focus:outline focus:outline-0 rounded-r-md"
+                      className={`block min-w-0 grow py-1.5 pl-[0.35rem] pr-3 text-base ${
+                        theme === "dark" ? "bg-gray-800" : "bg-gray-200"
+                      } ${
+                        theme === "dark" ? "text-gray-200" : "text-gray-800"
+                      } ${
+                        theme === "dark"
+                          ? "placeholder:text-gray-400"
+                          : "placeholder:text-gray-600"
+                      } focus:outline focus:outline-0 rounded-r-md`}
                     />
                   </div>
                   <ErrorMessage message={errors.phone} />
@@ -279,9 +351,23 @@ export default function Contact() {
                     name="message"
                     rows={4}
                     placeholder="Enter message here..."
-                    className={`block w-full rounded-md bg-gray-800 px-3.5 py-2 text-base text-gray-200 outline outline-1 -outline-offset-1 ${
-                      errors.message ? "outline-red-500" : "outline-gray-700"
-                    } placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-blue-400`}
+                    className={`block w-full rounded-md ${
+                      theme === "dark" ? "bg-gray-800" : "bg-gray-200"
+                    } px-3.5 py-2 text-base ${
+                      theme === "dark" ? "text-gray-200" : "text-gray-800"
+                    } outline outline-1 -outline-offset-1 ${
+                      errors.message
+                        ? "outline-red-500"
+                        : `${
+                            theme === "dark"
+                              ? "outline-gray-700"
+                              : "outline-gray-300"
+                          }`
+                    } ${
+                      theme === "dark"
+                        ? "placeholder:text-gray-400"
+                        : "placeholder:text-gray-600"
+                    } focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-blue-400`}
                     defaultValue={""}
                   />
                   <ErrorMessage message={errors.message} />
@@ -298,7 +384,11 @@ export default function Contact() {
             </div>
           </form>
         </div>
-        <div className="flex justify-self-center justify-center w-full border-t border-t-gray-200">
+        <div
+          className={`flex justify-self-center justify-center w-full border-t ${
+            theme === "dark" ? "border-t-gray-200" : "border-t-gray-800"
+          }`}
+        >
           <p className="mt-5 mb-12 sm:mb-16">romahapatra@gmail.com</p>
         </div>
       </div>

@@ -31,7 +31,6 @@ export default function Hero() {
   const { theme } = useTheme();
   const containerRef = useRef<HTMLDivElement>(null);
   const [iconCount, setIconCount] = useState(350);
-  const [scrollY, setScrollY] = useState(0);
 
   const backgroundImages = useMemo<BackgroundImage[]>(
     () => [
@@ -211,8 +210,6 @@ export default function Hero() {
 
       const { scrollTop, scrollHeight, clientHeight } = scrollContainer;
 
-      setScrollY(scrollTop);
-
       if (
         (e.deltaY > 0 && scrollTop < scrollHeight - clientHeight) ||
         (e.deltaY < 0 &&
@@ -244,7 +241,7 @@ export default function Hero() {
         {/* <p>Placeholder for hero</p> */}
         <div className="relative h-[45.5rem] overflow-y-auto mt-20 scrollbar-hide">
           <div
-            className="background-text absolute w-full h-[91rem] overflow-hidden"
+            className="background-text absolute w-full h-[150rem] overflow-hidden"
             style={{
               transform: `translateY(${scrollY}px)`,
               transition: "transform 0.1s ease-out",
@@ -254,7 +251,12 @@ export default function Hero() {
               <motion.div
                 key={index}
                 className="absolute overflow-hidden select-none"
-                style={position}
+                aria-hidden="true"
+                style={{
+                  top: position.top,
+                  left: position.left,
+                  willChange: "transform, opacity",
+                }}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 0.8 }}
                 transition={{
@@ -268,14 +270,13 @@ export default function Hero() {
                   alt={alt}
                   width={size}
                   height={size}
-                  className="opacity-30 mix-blend-difference filter contrast-125 brightness-90 hover:opacity-50 transition-opacity duration-200"
+                  className="blur-[1px] opacity-[0.3] mix-blend-difference filter contrast-125 brightness-90 hover:opacity-[0.5] hover:cursor-pointer transition-opacity duration-200 ease-in-out"
                   loading="lazy"
                 />
               </motion.div>
             ))}
           </div>
         </div>
-
         <div className="mt-[-29.2rem] z-10">
           <div className="flex flex-col items-center justify-center text-center mb-2">
             <motion.h1
@@ -291,11 +292,10 @@ export default function Hero() {
               Rohan Mahapatra
             </motion.h1>
           </div>
-
           <div className="flex justify-center">
-            <div className="relative">
+            <div>
               <motion.span
-                className="absolute w-full py-4 text-[2.5rem] sm:text-5xl md:text-6xl !leading-[1.3] font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 blur-xl"
+                className="flex absolute border w-fit mx-auto py-4 text-center blur-xl box-content text-[2.5rem] sm:text-5xl md:text-6xl !leading-[1.3] font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 select-none"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
@@ -303,7 +303,7 @@ export default function Hero() {
                 Remaking the digital experience
               </motion.span>
               <motion.h1
-                className="relative py-4 text-[2.5rem] sm:text-5xl md:text-6xl !leading-[1.3] font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-red-500"
+                className="flex relative top-0 w-fit h-auto py-4 items-center justify-center text-center text-[2.5rem] sm:text-5xl md:text-6xl !leading-[1.3] font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 select-auto"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}

@@ -243,7 +243,7 @@ export default function Hero() {
           <div
             className="background-text absolute w-full h-[150rem] overflow-hidden"
             style={{
-              transform: `translateY(${scrollY}px)`,
+              transform: `translateY(${window.scrollY}px)`,
               transition: "transform 0.1s ease-out",
             }}
           >

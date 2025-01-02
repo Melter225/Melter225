@@ -13,7 +13,12 @@ export default function Hero() {
   const backgroundImages = [
     { src: "/PersonalLogo.png", alt: "Personal Logo" },
     { src: "/CodeIcon.png", alt: "Code Icon" },
-    { src: "/GitHubIcon_Inverted.png", alt: "GitHub Icon" },
+    {
+      src: `${
+        theme === "dark" ? "/GitHubIcon_Inverted.png" : "/GitHubIcon.png"
+      }`,
+      alt: "GitHub Icon",
+    },
     { src: "/KeyboardIcon.png", alt: "Keyboard Icon" },
     { src: "/CoffeeIcon.png", alt: "Coffee Icon" },
     { src: "/LightbulbIcon.png", alt: "Lightbulb Icon" },
@@ -23,19 +28,79 @@ export default function Hero() {
     { src: "/PuzzlePieceIcon.png", alt: "Puzzle Piece Icon" },
     { src: "/HackerIcon.png", alt: "Hacker Icon" },
     { src: "/TerminalIcon.png", alt: "Terminal Icon" },
-    { src: "/ReactIcon_Inverted.png", alt: "React Icon" },
-    { src: "/CSharpIcon_Inverted.png", alt: "C# Icon" },
-    { src: "/CSSIcon_Inverted.png", alt: "CSS Icon" },
-    { src: "/HTMLIcon_Inverted.png", alt: "HTML Icon" },
-    { src: "/JavaScriptIcon_Inverted.png", alt: "JavaScript Icon" },
-    { src: "/LuaIcon_Inverted.png", alt: "Lua Icon" },
-    { src: "/NodeJSIcon_Inverted.png", alt: "NodeJS Icon" },
+    {
+      src: `${theme === "dark" ? "/ReactIcon_Inverted.png" : "/ReactIcon.png"}`,
+      alt: "React Icon",
+    },
+    {
+      src: `${
+        theme === "dark" ? "/CSharpIcon_Inverted.png" : "/CSharpIcon.png"
+      }`,
+      alt: "C# Icon",
+    },
+    {
+      src: `${theme === "dark" ? "/CSSIcon_Inverted.png" : "/CSSIcon.png"}`,
+      alt: "CSS Icon",
+    },
+    {
+      src: `${theme === "dark" ? "/HTMLIcon_Inverted.png" : "/HTMLIcon.png"}`,
+      alt: "HTML Icon",
+    },
+    {
+      src: `${
+        theme === "dark"
+          ? "/JavaScriptIcon_Inverted.png"
+          : "/JavaScriptIcon.png"
+      }`,
+      alt: "JavaScript Icon",
+    },
+    {
+      src: `${theme === "dark" ? "/LuaIcon_Inverted.png" : "/LuaIcon.png"}`,
+      alt: "Lua Icon",
+    },
+    {
+      src: `${
+        theme === "dark" ? "/NodeJSIcon_Inverted.png" : "/NodeJSIcon.png"
+      }`,
+      alt: "NodeJS Icon",
+    },
     { src: "/SQLIcon.png", alt: "SQL Icon" },
-    { src: "/PythonIcon_Inverted.png", alt: "Python Icon" },
-    { src: "/NextJSIcon_Inverted.png", alt: "NextJS Icon" },
-    { src: "/TypeScriptIcon_Inverted.png", alt: "Typescript Icon" },
-    { src: "/TailwindCSSIcon_Inverted.png", alt: "Tailwind CSS Icon" },
-    { src: "/RaspberryPiIcon_Inverted.png", alt: "Raspberry Pi Icon" },
+    {
+      src: `${
+        theme === "dark" ? "/PythonIcon_Inverted.png" : "/PythonIcon.png"
+      }`,
+      alt: "Python Icon",
+    },
+    {
+      src: `${
+        theme === "dark" ? "/NextJSIcon_Inverted.png" : "/NextJSIcon.png"
+      }`,
+      alt: "NextJS Icon",
+    },
+    {
+      src: `${
+        theme === "dark"
+          ? "/TypeScriptIcon_Inverted.png"
+          : "/TypeScriptIcon.png"
+      }`,
+      alt: "Typescript Icon",
+    },
+    {
+      src: `${
+        theme === "dark"
+          ? "/TailwindCSSIcon_Inverted.png"
+          : "/TailwindCSSIcon.png"
+      }`,
+      alt: "Tailwind CSS Icon",
+    },
+    {
+      src: `${
+        theme === "dark"
+          ? "/RaspberryPiIcon_Inverted.png"
+          : "/RaspberryPiIcon.png"
+      }`,
+      alt: "Raspberry Pi Icon",
+    },
     { src: "/CibarLogo.png", alt: "Cibar Icon" },
     { src: "/QuixLogo.png", alt: "Quix Icon" },
     { src: "/DevXIcon.png", alt: "DevX Icon" },
@@ -101,7 +166,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="home">
+    <section id="home" className={`${theme === "dark" ? "" : "bg-gray-200"}`}>
       <div ref={containerRef} className="flex flex-col w-full h-[50.5rem]">
         {/* <p>Placeholder for hero</p> */}
         <div className="relative h-[45.5rem] overflow-y-auto mt-20 scrollbar-hide scroll-smooth">
@@ -144,7 +209,11 @@ export default function Hero() {
         <div className="mt-[-29.2rem] z-10">
           <div className="flex flex-col items-center justify-center text-center mb-2">
             <motion.h1
-              className="text-[3.25rem] sm:text-6xl md:text-7xl !leading-[1.2] font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-500"
+              className={`text-[3.25rem] sm:text-6xl md:text-7xl !leading-[1.2] font-extrabold text-transparent bg-clip-text bg-gradient-to-r ${
+                theme === "dark"
+                  ? "from-gray-200 to-gray-500"
+                  : "from-gray-500 to-gray-800"
+              }`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 1.25, ease: "easeIn" }}

@@ -31,6 +31,7 @@ export default function Hero() {
   const { theme } = useTheme();
   const containerRef = useRef<HTMLDivElement>(null);
   const [iconCount, setIconCount] = useState(350);
+  const [scrollY, setScrollY] = useState(0);
 
   const backgroundImages = useMemo<BackgroundImage[]>(
     () => [
@@ -133,6 +134,17 @@ export default function Hero() {
     [theme]
   );
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    setScrollY(window.scrollY);
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const generateIcons = useCallback(() => {
     return Array.from({ length: iconCount }).map((_, index): IconBackground => {
       const randomIndex = Math.floor(Math.random() * backgroundImages.length);
@@ -215,7 +227,7 @@ export default function Hero() {
         (e.deltaY < 0 &&
           scrollTop < scrollHeight - clientHeight &&
           scrollTop > 0) ||
-        (e.deltaY < 0 && window.scrollY === 0)
+        (e.deltaY < 0 && scrollY === 0)
       ) {
         e.preventDefault();
         scrollContainer.scrollTop += e.deltaY;
@@ -227,7 +239,7 @@ export default function Hero() {
     return () => {
       window.removeEventListener("wheel", handleScroll);
     };
-  }, []);
+  }, [scrollY]);
 
   return (
     <section
@@ -243,7 +255,7 @@ export default function Hero() {
           <div
             className="background-text absolute w-full h-[150rem] overflow-hidden"
             style={{
-              transform: `translateY(${window.scrollY}px)`,
+              transform: `translateY(${scrollY}px)`,
               transition: "transform 0.1s ease-out",
             }}
           >

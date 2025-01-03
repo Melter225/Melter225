@@ -39,24 +39,18 @@ export default function Projects() {
   const projects = [
     {
       title: "DevX",
-      description: `Description Description Description Description Description
-            Description Description Description Description Description
-            Description Description Description Description Description
-            Description Description Description Description Description`,
+      description:
+        "DevX is a revolutionary browser designed for developers, merging the functionalities of a cutting-edge IDE, an advanced desktop IDE companion, and AI integration. With its intuitive interface, developers can code, debug, and collaborate directly in the browser, eliminating the need to switch between tools. The browser includes real-time syntax highlighting, language support, and streamlined project management, all optimized for maximum productivity. The desktop IDE companion enhances this experience with powerful debugging tools, seamless integration with version control systems, and advanced features for managing complex projects. DevX's AI assistant redefines coding by offering contextual suggestions, auto-generating boilerplate code, resolving bugs, and optimizing performance. It adapts to the user's habits, providing personalized insights and learning from ongoing projects. Beyond individual development, DevX connects users through a Stack Overflow-style forum, where developers can share expertise, troubleshoot, and grow as a community. From simplifying solo projects to streamlining team workflows, DevX provides everything modern developers need to excel in their craft.",
     },
     {
       title: "Quix",
-      description: `Description Description Description Description Description
-            Description Description Description Description Description
-            Description Description Description Description Description
-            Description Description Description Description Description`,
+      description:
+        "Quix is an AI-powered learning app that offers a personalized educational experience, adapting to the needs and interests of each user. Whether exploring a broad topic like world history or diving into specifics such as the mechanics of quantum physics, Quix tailors its lessons to fit the learner's goals. The app supports a wide range of formats, including detailed reading materials, curated videos, interactive quizzes, and web-based exploration. Its AI-driven engine dynamically adjusts the content based on user feedback, progress, and comprehension, ensuring an effective learning process. Quix also offers simulations and virtual tutors, allowing users to practice concepts interactively. Whether preparing for exams, pursuing hobbies, or advancing professional skills, the app transforms learning into an engaging and efficient journey. With its user-friendly interface and versatile features, Quix makes mastering any subject accessible to all.",
     },
     {
       title: "Cibar",
-      description: `Description Description Description Description Description
-            Description Description Description Description Description
-            Description Description Description Description Description
-            Description Description Description Description Description`,
+      description:
+        "Cibar is a Chrome extension dedicated to combating cyberbullying and harmful online content. Running quietly in the background, it uses advanced AI to monitor the user's screen for text and images that suggest cyberbullying, harassment, or inappropriate material. When Cibar detects potential issues, it evaluates the severity and provides actionable guidance to address the situation. Users receive tailored advice, educational resources, and, if needed, contact information for relevant support organizations. Cibar ensures its guidance is age-appropriate, offering simplified steps for younger users and comprehensive strategies for adults. By promoting awareness and constructive responses, Cibar fosters safer digital interactions and empowers users to navigate the online world responsibly.",
     },
   ];
 
@@ -214,13 +208,11 @@ export default function Projects() {
                   : "from-gray-800 to-transparent"
               }`}
             >
-              Description Description Description Description Description
-              Description Description Description Description Description
-              Description Description Description Description Description
-              Description Description Description Description Description
-              Description Description Description Description Description
-              Description Description Description Description Description
-              Description Description Description Description Description
+              DevX is a revolutionary browser designed for developers, merging
+              the functionalities of a cutting-edge IDE, an advanced desktop IDE
+              companion, and AI integration. With its intuitive interface,
+              developers can code, debug, and collaborate directly in the
+              browser, eliminating the need to switch between tools.
             </p>
             <p
               className="px-5 pb-5 text-[#0077b6] text-sm hover:cursor-pointer"
@@ -256,13 +248,11 @@ export default function Projects() {
                   : "from-gray-800 to-transparent"
               }`}
             >
-              Description Description Description Description Description
-              Description Description Description Description Description
-              Description Description Description Description Description
-              Description Description Description Description Description
-              Description Description Description Description Description
-              Description Description Description Description Description
-              Description Description Description Description Description
+              Quix is an AI-powered learning app that offers a personalized
+              educational experience, adapting to the needs and interests of
+              each user. Whether exploring a broad topic like world history or
+              diving into specifics such as the mechanics of quantum physics,
+              Quix tailors its lessons to fit the learner&apos;s goals.
             </p>
             <p
               className="px-5 pb-5 text-[#0077b6] text-sm hover:cursor-pointer"
@@ -299,13 +289,11 @@ export default function Projects() {
               }
               `}
             >
-              Description Description Description Description Description
-              Description Description Description Description Description
-              Description Description Description Description Description
-              Description Description Description Description Description
-              Description Description Description Description Description
-              Description Description Description Description Description
-              Description Description Description Description Description
+              Cibar is a Chrome extension dedicated to combating cyberbullying
+              and harmful online content. Running quietly in the background, it
+              uses advanced AI to monitor the user&apos;s screen for text and
+              images that suggest cyberbullying, harassment, or inappropriate
+              material.
             </p>
             <p
               className="px-5 pb-5 text-[#0077b6] text-sm hover:cursor-pointer"

@@ -59,6 +59,11 @@ export default function Footer() {
       src: "/XIcon.png",
       alt: "X",
     },
+    {
+      href: "https://rohanmahapatra.com/attributions",
+      src: "/Attributions.png",
+      alt: "Attributions",
+    },
     // {
     //   href: "https://tiktok.com/@your-username",
     //   src: "/TiktokIcon.png",
@@ -78,7 +83,7 @@ export default function Footer() {
           theme === "dark" ? "bg-[#050A16]" : "bg-[#e9eee6]"
         } border-2 ${
           theme === "dark" ? "border-neutral-800" : "border-neutral-400"
-        } rounded-full w-[20rem] h-12 mr-5 bottom-5 p-2`}
+        } rounded-full w-[22.4rem] h-12 mr-5 bottom-5 p-2`}
       >
         {socialLinks.map((link) => (
           <SocialLink

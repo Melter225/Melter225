@@ -91,17 +91,6 @@ export default function Projects() {
         getComputedStyle(document.documentElement).fontSize
       );
 
-      const titleRect = projectTitle.getBoundingClientRect();
-      const thirdProjectRect = thirdProject.getBoundingClientRect();
-
-      if (e.deltaY > 0 && titleRect.top <= rem * 10) {
-        e.preventDefault();
-      }
-
-      if (e.deltaY < 0 && thirdProjectRect.bottom <= 0) {
-        e.preventDefault();
-      }
-
       const titleTop = projectTitle.getBoundingClientRect().top;
       const potentialTitleTop = titleTop - e.deltaY;
 

@@ -31,7 +31,6 @@ export default function Hero() {
   const { theme } = useTheme();
   const containerRef = useRef<HTMLDivElement>(null);
   const [iconCount, setIconCount] = useState(350);
-  const [scrollY, setScrollY] = useState(0);
 
   const backgroundImages = useMemo<BackgroundImage[]>(
     () => [
@@ -134,17 +133,6 @@ export default function Hero() {
     [theme]
   );
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    setScrollY(window.scrollY);
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   const generateIcons = useCallback(() => {
     return Array.from({ length: iconCount }).map((_, index): IconBackground => {
       const randomIndex = Math.floor(Math.random() * backgroundImages.length);
@@ -227,7 +215,7 @@ export default function Hero() {
         (e.deltaY < 0 &&
           scrollTop < scrollHeight - clientHeight &&
           scrollTop > 0) ||
-        (e.deltaY < 0 && scrollY === 0)
+        (e.deltaY < 0 && window != undefined && window.scrollY === 0)
       ) {
         e.preventDefault();
         scrollContainer.scrollTop += e.deltaY;
@@ -239,7 +227,7 @@ export default function Hero() {
     return () => {
       window.removeEventListener("wheel", handleScroll);
     };
-  }, [scrollY]);
+  }, []);
 
   return (
     <section
@@ -253,9 +241,11 @@ export default function Hero() {
         {/* <p>Placeholder for hero</p> */}
         <div className="relative h-[45.5rem] overflow-y-auto mt-20 scrollbar-hide">
           <div
-            className="background-text absolute w-full h-[150rem] overflow-hidden"
+            className="background-text absolute w-full h-[120rem] overflow-hidden"
             style={{
-              transform: `translateY(${scrollY}px)`,
+              transform: `translateY(${
+                typeof window !== "undefined" ? window.scrollY : 0
+              }px)`,
               transition: "transform 0.1s ease-out",
             }}
           >

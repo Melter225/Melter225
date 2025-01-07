@@ -1,156 +1,143 @@
 "use client";
 
-import Image from "next/image";
 import { useTheme } from "../../contexts/themeContext.tsx";
+import BackgroundGrid from "./backgroundGrid.tsx";
 
-export default function About() {
+export default function Statistics() {
   const { theme } = useTheme();
-  const languages = [
-    { src: "/LogoIcon.png", alt: "Logo", width: 40, height: 40 },
-    {
-      src: `${
-        theme === "dark" ? "/PygameIcon_Inverted.png" : "/PygameIcon.png"
-      }`,
-      alt: "Pygame",
-      width: 120,
-      height: 120,
-    },
-    { src: "/PythonIcon.png", alt: "Python", width: 30, height: 30 },
-    { src: "/HTMLIcon.png", alt: "HTML", width: 30, height: 30 },
-    { src: "/CSSIcon.png", alt: "CSS", width: 30, height: 30 },
-    { src: "/JavaScriptIcon.png", alt: "JavaScript", width: 30, height: 30 },
-    { src: "/NodeJSIcon.png", alt: "NodeJS", width: 33, height: 33 },
-    { src: "/ReactIcon.png", alt: "React", width: 30, height: 30 },
-    { src: "/RaspberryPiIcon.png", alt: "Raspberry Pi", width: 40, height: 40 },
-    { src: "/LuaIcon.png", alt: "Lua", width: 30, height: 30 },
-    { src: "/PostgreSQLIcon.png", alt: "PostgreSQL", width: 32, height: 32 },
-    { src: "/SQLiteIcon.png", alt: "SQLite", width: 85, height: 85 },
-    { src: "/GitHubIcon.png", alt: "GitHub", width: 30, height: 30 },
-    { src: "/KotlinIcon.png", alt: "Kotlin", width: 30, height: 30 },
-    { src: "/UnityIcon.png", alt: "Unity", width: 50, height: 50 },
-    { src: "/FigmaIcon.png", alt: "Figma", width: 40, height: 40 },
-    { src: "/NextJSIcon.png", alt: "NextJS", width: 30, height: 30 },
-    { src: "/TypeScriptIcon.png", alt: "TypeScript", width: 30, height: 30 },
-    { src: "/TailwindCSSIcon.png", alt: "Tailwind CSS", width: 30, height: 30 },
-    { src: "/PrismaIcon.png", alt: "Prisma", width: 30, height: 30 },
-    { src: "/TinkercadIcon.png", alt: "Tinkercad", width: 32, height: 32 },
-    { src: "/CSharpIcon.png", alt: "C#", width: 30, height: 30 },
-    { src: "/RustIcon.png", alt: "Rust", width: 30, height: 30 },
-    { src: "/ReactIcon.png", alt: "React Native", width: 30, height: 30 },
-  ];
 
   return (
-    <section id="about" className="mt-28">
-      <div className="w-full text-center">
-        <h1 className="font-semibold text-5xl">About Me</h1>
-      </div>
-      <div className="flex w-full px-6 sm:px-12 lg:px-24 mt-10">
-        <div
-          className={`flex flex-col w-full ${
-            theme === "dark" ? "bg-gray-800" : "bg-gray-200"
-          } border-2 ${
-            theme === "dark" ? "border-gray-700" : "border-gray-300"
-          } rounded-lg`}
-        >
-          <p className="pl-5 pt-5 text-2xl font-semibold">About</p>
-          <p className="text-sm lg:text-base p-5">
-            I&apos;m Rohan Mahapatra, a passionate coder with a love for
-            creating and problem-solving. My journey into the world of
-            technology began early, thanks to the guidance of my grandfather,
-            who introduced me to programming with Python and Turtle. Fueled by
-            curiosity, I dove into web development, exploring HTML, CSS, and
-            JavaScript, which laid the foundation for my ever-growing skills in
-            the tech space.
-            <br></br>
-            <br></br>
-            Over the years, I&apos;ve expanded my expertise across various
-            programming languages and frameworks. I learned the basics of React
-            and mastered Node.js, using it to build servers and multiplayer
-            platforms. From there, I advanced to Next.js, TypeScript, and
-            Tailwind CSS, continually seeking opportunities to grow.
-            <br></br>
-            <br></br>
-            My coding journey has included diverse projects, from developing
-            tools for nonprofits to creating AI-powered educational apps and
-            extensions designed to tackle cyberbullying. As of now, I&apos;m
-            developing a Rust-based browser targeted for developers,
-            incorporating features like a buit-in IDE and integrated AI.
-            <br></br>
-            <br></br>
-            I&apos;ve also ventured into robotics, experimenting with hardware
-            such as the Raspberry Pi, where I explored features including the
-            Sense HAT, camera integration, and breadboard circuits.
-            Additionally, I&apos;ve designed and built more hardware-oriented
-            robots with features like sonar detection and line-following
-            capabilities. I even delved into game development, creating
-            functional 3D games through Unity as well as smaller platformers
-            using Lua, which taught me the value of blending creativity with
-            technical know-how. Most recently, I&apos;ve been focusing on
-            competitive programming, honing my skills with languages such as
-            Python and C# in preparation for USACO.
-            <br></br>
-            <br></br>
-            Beyond technology, I enjoy a range of hobbies that keep me balanced.
-            I write for fun, fence to stay active, and play the tabla to connect
-            with my cultural roots.
-          </p>
+    <section id="about" className="relative mt-28 h-[calc(100svh-15rem)]">
+      <div className="relative w-full h-full">
+        <div className="mt-[7rem]">
+          <BackgroundGrid id="fadeGradient" />
         </div>
-      </div>
-      <div className="flex flex-row w-full gap-x-5 px-6 sm:px-12 lg:px-24 mt-5">
-        <div
-          className={`flex flex-col w-1/2 justify-center ${
-            theme === "dark" ? "bg-gray-800" : "bg-gray-200"
-          } border-2 ${
-            theme === "dark" ? "border-gray-700" : "border-gray-300"
-          } rounded-lg`}
-        >
-          <p className="px-5 pt-[0.875rem] lg:pt-4 text-xl lg:text-2xl font-semibold">
-            Projects Created
-          </p>
-          <p className="pl-5 py-5 text-3xl lg:text-4xl font-semibold">111</p>
+        {/* <div
+          className={`absolute inset-0 bg-gradient-to-b ${
+            theme === "dark"
+              ? "from-gray-900/90 to-gray-950/90 via-gray-900/90"
+              : "from-gray-100/90 to-gray-50/90 via-gray-100/90"
+          }`}
+        /> */}
+
+        <div className="w-full">
+          <h1 className="font-semibold text-5xl text-start ml-6 sm:ml-12 lg:ml-24 mb-16">
+            About Me
+          </h1>
         </div>
-        <div
-          className={`flex flex-col w-1/2 ${
-            theme === "dark" ? "bg-gray-800" : "bg-gray-200"
-          } border-2 ${
-            theme === "dark" ? "border-gray-700" : "border-gray-300"
-          } rounded-lg`}
-        >
-          <p className="px-5 pt-4 text-xl lg:text-2xl font-semibold">
-            Years of Experience
-          </p>
-          <p className="pl-5 py-5 text-3xl lg:text-4xl font-semibold">6</p>
-          <div className="grid">
-            <p className="absolute self-end justify-self-end text-sm xs:text-base lg:text-lg pr-4 lg:pr-5 pb-2 lg:pb-5">
-              Since 2018
-            </p>
-          </div>
-        </div>
-      </div>
-      <div className="flex w-full px-6 sm:px-12 lg:px-24 mt-5">
-        <div
-          className={`flex flex-col text-center w-full ${
-            theme === "dark" ? "bg-gray-800" : "bg-gray-200"
-          } border-2 ${
-            theme === "dark" ? "border-gray-700" : "border-gray-300"
-          } rounded-lg`}
-        >
-          <p className="pl-5 pt-5 text-2xl font-semibold">Languages & Tools</p>
-          <div className="grid grid-cols-6 gap-x-10 gap-y-3 px-3 py-5 sm:p-5 mt-5">
-            {languages.map(({ src, alt, width, height }, index) => (
-              <div className="flex flex-col items-center" key={`${index}`}>
-                <Image
-                  className={`${theme === "dark" ? "invert" : "invert-0"}`}
-                  src={src}
-                  alt={alt}
-                  width={width}
-                  height={height}
-                />
-                <p className="hidden sm2:block text-xs sm:text-sm lg:text-base">
-                  {alt}
+        <div className="flex h-[105%]">
+          <div
+            className={`flex flex-col flex-grow bg-gradient-to-b ${
+              theme === "dark"
+                ? "from-gray-900 via-[#111827] to-gray-950"
+                : "from-gray-100 via-[#f9fafb] to-gray-50"
+            } pt-10 mb-28 border-t-2 ${
+              theme === "dark" ? "border-gray-800" : "border-gray-200"
+            }`}
+          >
+            <div className="z-[5] flex flex-row w-full gap-x-5 px-6 sm:px-12 lg:px-24 mt-[-4rem]">
+              <div
+                className={`flex flex-col w-3/5 ${
+                  theme === "dark" ? "bg-gray-800" : "bg-gray-200"
+                } border-2 ${
+                  theme === "dark" ? "border-gray-700" : "border-gray-300"
+                } rounded-xl`}
+              >
+                <p className="pl-5 pt-5 text-2xl font-semibold">About</p>
+                <p className="text-sm lg:text-base p-5">
+                  I&apos;m Rohan Mahapatra, a passionate coder whose journey
+                  began with Python under my grandfather&apos;s guidance.
+                  I&apos;ve grown from web development fundamentals to mastering
+                  modern frameworks like React, Next.js, and TypeScript. My
+                  projects range from nonprofit tools to AI-powered apps and a
+                  Rust-based developer browser currently in development.
+                  I&apos;ve explored hardware through Raspberry Pi projects and
+                  robotics, created games with Unity and Lua, and am currently
+                  focusing on competitive programming for USACO.
                 </p>
               </div>
-            ))}
+              <div
+                className={`flex flex-col w-2/5 ${
+                  theme === "dark" ? "bg-gray-800" : "bg-gray-200"
+                } border-2 ${
+                  theme === "dark" ? "border-gray-700" : "border-gray-300"
+                } rounded-xl`}
+              >
+                <p className="pl-5 pt-5 text-2xl font-semibold">Hobbies</p>
+                <p className="text-sm lg:text-base p-5">
+                  Beyond technology, I pursue creative writing, exploring
+                  various forms to express my thoughts. I&apos;ve dedicated
+                  eight years to playing the tabla, a traditional Indian
+                  percussion instrument, connecting me to my heritage. I also
+                  practice fencing with my sister, enjoying its blend of
+                  strategy and physical discipline.
+                </p>
+                {/* <div
+              className={`flex flex-col w-1/2 justify-center ${
+                theme === "dark" ? "bg-gray-800" : "bg-gray-200"
+              } border-2 ${
+                theme === "dark" ? "border-gray-700" : "border-gray-300"
+              } rounded-xl`}
+            >
+              <p className="px-5 pt-[0.875rem] lg:pt-4 text-xl lg:text-2xl font-semibold">
+                Projects Created
+              </p>
+              <p className="pl-5 py-5 text-3xl lg:text-4xl font-semibold">
+                111
+              </p>
+            </div>
+            <div
+              className={`flex flex-col w-1/2 ${
+                theme === "dark" ? "bg-gray-800" : "bg-gray-200"
+              } border-2 ${
+                theme === "dark" ? "border-gray-700" : "border-gray-300"
+              } rounded-xl`}
+            >
+              <p className="px-5 pt-4 text-xl lg:text-2xl font-semibold">
+                Years of Experience
+              </p>
+              <p className="pl-5 py-5 text-3xl lg:text-4xl font-semibold">6</p>
+              <div className="grid">
+                <p className="absolute self-end justify-self-end text-sm xs:text-base lg:text-lg pr-4 lg:pr-5 pb-2 lg:pb-5">
+                  Since 2018
+                </p>
+              </div>
+            </div>
+          </div> */}
+                {/* <div className="flex w-full px-6 sm:px-12 lg:px-24 mt-5">
+          <div
+            className={`flex flex-col text-center w-full ${
+              theme === "dark" ? "bg-gray-800" : "bg-gray-200"
+            } border-2 ${
+              theme === "dark" ? "border-gray-700" : "border-gray-300"
+            } rounded-xl`}
+          >
+            <p className="pl-5 pt-5 text-2xl font-semibold">
+              Languages & Tools
+            </p>
+            <div className="grid grid-cols-6 gap-x-10 gap-y-3 px-3 py-5 sm:p-5 mt-5">
+              {languages.map(({ src, alt, width, height, invert }, index) => (
+                <div className="flex flex-col items-center" key={`${index}`}>
+                  <Image
+                    className={`${
+                      theme === "dark"
+                        ? `${invert === true ? "invert" : "invert-0"}`
+                        : "invert-0"
+                    }`}
+                    src={src}
+                    alt={`${alt} Icon`}
+                    width={width}
+                    height={height}
+                  />
+                  <p className="hidden sm2:block text-xs sm:text-sm lg:text-base">
+                    {alt}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div> */}
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@ import Header from "./header.tsx";
 import Hero from "./hero.tsx";
 import Awards from "./awards.tsx";
 import About from "./about.tsx";
+import Statistics from "./statistics.tsx";
 import Projects from "./projects.tsx";
 import Testimonials from "./testimonials.tsx";
 import Contact from "./contact.tsx";
@@ -15,6 +16,7 @@ export default function PersonalPortfolio() {
       <Hero />
       <Awards />
       <About />
+      <Statistics />
       <Projects />
       <Testimonials />
       <Contact />

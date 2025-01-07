@@ -1,14 +1,12 @@
 "use client";
 
 // import Image from "next/image";
-import React, { useEffect, useRef } from "react";
 import { MdClose } from "react-icons/md";
 import { useTheme } from "../../contexts/themeContext.tsx";
+import BackgroundGrid from "./backgroundGrid.tsx";
 
 export default function Projects() {
   const { theme } = useTheme();
-  const secondProjectRef = useRef<HTMLDivElement>(null);
-  const thirdProjectRef = useRef<HTMLDivElement>(null);
 
   const darkGradient = `linear-gradient(to bottom,
     transparent 0%,
@@ -75,119 +73,73 @@ export default function Projects() {
     popup?.classList.add("hidden");
   };
 
-  useEffect(() => {
-    const handleScroll = (e: WheelEvent) => {
-      if (!secondProjectRef.current || !thirdProjectRef.current) return;
-
-      const projectTitle = document.querySelector(".project_title");
-      const firstProject = document.querySelector(".first_project");
-      const secondProject = secondProjectRef.current;
-      const thirdProject = thirdProjectRef.current;
-
-      if (!projectTitle || !firstProject || !secondProject || !thirdProject)
-        return;
-
-      const rem = parseFloat(
-        getComputedStyle(document.documentElement).fontSize
-      );
-
-      const titleTop = projectTitle.getBoundingClientRect().top;
-      const potentialTitleTop = titleTop - e.deltaY;
-
-      const secondProjectTop = secondProject.getBoundingClientRect().top;
-      const potentialSecondTop = secondProjectTop - e.deltaY - rem * 3.5;
-
-      const thirdProjectTop = thirdProject.getBoundingClientRect().top;
-      const potentialThirdTop = thirdProjectTop - e.deltaY;
-      const thirdProjectBottom = thirdProject.getBoundingClientRect().bottom;
-
-      if (
-        e.deltaY > 0 &&
-        titleTop <= rem * 10 &&
-        thirdProjectBottom >= window.innerHeight - 5 * rem
-      ) {
-        if (
-          potentialTitleTop <= rem * 10 &&
-          potentialSecondTop >= potentialTitleTop
-        ) {
-          e.preventDefault();
-
-          const currentMarginRem = parseFloat(
-            secondProject.style.marginTop || "0"
-          );
-          const rootFontSize = parseFloat(
-            getComputedStyle(document.documentElement).fontSize
-          );
-
-          secondProject.style.marginTop = `${
-            currentMarginRem - e.deltaY / rootFontSize
-          }rem`;
-        } else if (
-          potentialThirdTop >= secondProjectTop &&
-          secondProject.style.marginTop
-        ) {
-          e.preventDefault();
-
-          const currentMarginRem = parseFloat(
-            thirdProject.style.marginTop || "0"
-          );
-          const rootFontSize = parseFloat(
-            getComputedStyle(document.documentElement).fontSize
-          );
-
-          thirdProject.style.marginTop = `${
-            currentMarginRem - e.deltaY / rootFontSize
-          }rem`;
-        }
-      } else if (
-        e.deltaY < 0 &&
-        titleTop <= rem * 10 &&
-        thirdProjectBottom >= window.innerHeight - 5 * rem
-      ) {
-        const thirdMargin = parseFloat(thirdProject.style.marginTop || "0");
-        const secondMargin = parseFloat(secondProject.style.marginTop || "0");
-
-        if (thirdMargin < 0) {
-          console.log(parseFloat(thirdProject.style.marginTop));
-          e.preventDefault();
-          const currentMarginRem = parseFloat(thirdProject.style.marginTop);
-          const rootFontSize = parseFloat(
-            getComputedStyle(document.documentElement).fontSize
-          );
-          const newMargin = currentMarginRem - e.deltaY / rootFontSize;
-          thirdProject.style.marginTop = `${newMargin}rem`;
-        } else if (secondMargin < 0) {
-          e.preventDefault();
-          const currentMarginRem = parseFloat(secondProject.style.marginTop);
-          const rootFontSize = parseFloat(
-            getComputedStyle(document.documentElement).fontSize
-          );
-          const newMargin = currentMarginRem - e.deltaY / rootFontSize;
-          secondProject.style.marginTop = `${newMargin}rem`;
-        }
-      }
-    };
-
-    window.addEventListener("wheel", handleScroll, { passive: false });
-
-    return () => {
-      window.removeEventListener("wheel", handleScroll);
-    };
-  }, []);
-
   return (
-    <section id="projects" className="mt-28">
-      <div className="project_title relative z-30 w-full text-center">
-        <h1 className="font-semibold text-5xl">Projects</h1>
-      </div>
-      <div className="first_project relative flex flex-col h-[calc(100svh-5rem)] mb-28">
-        <div className="flex flex-col flex-grow justify-center w-full px-6 sm:px-12 lg:px-24 gap-x-5">
+    <section id="projects" className="mt-36">
+      <div
+        className="first_project sticky top-36 flex flex-col h-[calc(100svh-5rem)] mb-28"
+        style={{
+          background: theme === "dark" ? darkGradient : lightGradient,
+        }}
+      >
+        <BackgroundGrid
+          id="fadeGradient"
+          startOffset={0}
+          midStartOffset={35}
+          midEndOffset={65}
+          endOffset={100}
+        />
+        <div className="top-24 w-full text-center">
+          <h1 className="font-semibold text-5xl">Projects</h1>
+        </div>
+        <div className="z-[5] flex flex-col flex-grow justify-center w-full px-6 sm:px-12 lg:px-24 gap-x-5">
+          <svg
+            className="hidden lg:flex absolute top-0 left-0 h-dvh"
+            width="400"
+            height="400"
+            viewBox="0 0 879 1077"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g opacity="0.2" filter="url(#filter0_f_130_898)">
+              <ellipse
+                cx="439.5"
+                cy="470.5"
+                rx="238.5"
+                ry="139.5"
+                transform="rotate(90 439.5 470.5)"
+                fill="#5000B5"
+              ></ellipse>
+            </g>
+            <defs>
+              <filter
+                id="filter0_f_130_898"
+                x="0"
+                y="-68"
+                width="879"
+                height="1077"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood floodOpacity="0" result="BackgroundImageFix"></feFlood>
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="BackgroundImageFix"
+                  result="shape"
+                ></feBlend>
+                <feGaussianBlur
+                  stdDeviation="150"
+                  result="effect1_foregroundBlur_130_898"
+                ></feGaussianBlur>
+              </filter>
+            </defs>
+          </svg>
           <div
             className={`flex flex-col w-3/4 sm:w-1/2 lg:w-1/3 ${
               theme === "dark" ? "bg-gray-800" : "bg-gray-200"
             } border-2 ${
               theme === "dark" ? "border-gray-700" : "border-gray-300"
-            } rounded-lg`}
+            } rounded-xl`}
           >
             <p className="text-[1.65rem] font-bold pt-5 pl-5">DevX</p>
             <p
@@ -204,7 +156,7 @@ export default function Projects() {
               browser, eliminating the need to switch between tools.
             </p>
             <p
-              className="px-5 pb-5 text-[#0077b6] text-sm hover:cursor-pointer"
+              className="z-10 px-5 pb-5 text-[#0077b6] text-sm hover:cursor-pointer"
               onClick={() => {
                 showPopup("DevX");
               }}
@@ -215,19 +167,67 @@ export default function Projects() {
         </div>
       </div>
       <div
-        ref={secondProjectRef}
-        className="second_project z-10 relative flex flex-col h-[calc(100svh-5rem)] mb-28"
+        className="second_project z-10 sticky top-36 flex flex-col h-[calc(100svh-5rem)] mb-28"
         style={{
           background: theme === "dark" ? darkGradient : lightGradient,
         }}
       >
-        <div className="flex flex-col flex-grow justify-center items-end w-full px-6 sm:px-12 lg:px-24 gap-x-5">
+        <BackgroundGrid
+          id="fadeGradient"
+          startOffset={0}
+          midStartOffset={35}
+          midEndOffset={65}
+          endOffset={100}
+        />
+        <div className="z-[5] flex flex-col flex-grow justify-center items-end w-full px-6 sm:px-12 lg:px-24 gap-x-5">
+          <svg
+            className="hidden lg:flex absolute top-0 right-0 h-dvh"
+            width="400"
+            height="400"
+            viewBox="0 0 879 1077"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g opacity="0.2" filter="url(#filter0_f_130_898)">
+              <ellipse
+                cx="439.5"
+                cy="470.5"
+                rx="238.5"
+                ry="139.5"
+                transform="rotate(90 439.5 470.5)"
+                fill="#5000B5"
+              ></ellipse>
+            </g>
+            <defs>
+              <filter
+                id="filter0_f_130_898"
+                x="0"
+                y="-68"
+                width="879"
+                height="1077"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood floodOpacity="0" result="BackgroundImageFix"></feFlood>
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="BackgroundImageFix"
+                  result="shape"
+                ></feBlend>
+                <feGaussianBlur
+                  stdDeviation="150"
+                  result="effect1_foregroundBlur_130_898"
+                ></feGaussianBlur>
+              </filter>
+            </defs>
+          </svg>
           <div
             className={`flex flex-col w-3/4 sm:w-1/2 lg:w-1/3 ${
               theme === "dark" ? "bg-gray-800" : "bg-gray-200"
             } border-2 ${
               theme === "dark" ? "border-gray-700" : "border-gray-300"
-            } rounded-lg`}
+            } rounded-xl`}
           >
             <p className="text-[1.65rem] font-bold pt-5 pl-5">Quix</p>
             <p
@@ -244,7 +244,7 @@ export default function Projects() {
               Quix tailors its lessons to fit the learner&apos;s goals.
             </p>
             <p
-              className="px-5 pb-5 text-[#0077b6] text-sm hover:cursor-pointer"
+              className="z-10 px-5 pb-5 text-[#0077b6] text-sm hover:cursor-pointer"
               onClick={() => {
                 showPopup("Quix");
               }}
@@ -255,19 +255,67 @@ export default function Projects() {
         </div>
       </div>
       <div
-        ref={thirdProjectRef}
-        className="third_project z-20 relative flex flex-col h-[calc(100svh-5rem)]"
+        className="third_project z-20 relative top-[-7rem] flex flex-col h-[calc(100svh-5rem)] mb-28"
         style={{
           background: theme === "dark" ? darkGradient : lightGradient,
         }}
       >
-        <div className="flex flex-col flex-grow justify-center w-full px-6 sm:px-12 lg:px-24 gap-x-5">
+        <BackgroundGrid
+          id="fadeGradient"
+          startOffset={0}
+          midStartOffset={35}
+          midEndOffset={65}
+          endOffset={100}
+        />
+        <div className="z-[5] flex flex-col flex-grow justify-center w-full px-6 sm:px-12 lg:px-24 gap-x-5">
+          <svg
+            className="hidden lg:flex absolute top-0 left-0 h-dvh"
+            width="400"
+            height="400"
+            viewBox="0 0 879 1077"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g opacity="0.2" filter="url(#filter0_f_130_898)">
+              <ellipse
+                cx="439.5"
+                cy="470.5"
+                rx="238.5"
+                ry="139.5"
+                transform="rotate(90 439.5 470.5)"
+                fill="#5000B5"
+              ></ellipse>
+            </g>
+            <defs>
+              <filter
+                id="filter0_f_130_898"
+                x="0"
+                y="-68"
+                width="879"
+                height="1077"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood floodOpacity="0" result="BackgroundImageFix"></feFlood>
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="BackgroundImageFix"
+                  result="shape"
+                ></feBlend>
+                <feGaussianBlur
+                  stdDeviation="150"
+                  result="effect1_foregroundBlur_130_898"
+                ></feGaussianBlur>
+              </filter>
+            </defs>
+          </svg>
           <div
             className={`flex flex-col w-3/4 sm:w-1/2 lg:w-1/3 ${
               theme === "dark" ? "bg-gray-800" : "bg-gray-200"
             } border-2 ${
               theme === "dark" ? "border-gray-700" : "border-gray-300"
-            } rounded-lg`}
+            } rounded-xl`}
           >
             <p className="text-[1.65rem] font-bold pt-5 pl-5">Cibar</p>
             <p
@@ -285,7 +333,7 @@ export default function Projects() {
               material.
             </p>
             <p
-              className="px-5 pb-5 text-[#0077b6] text-sm hover:cursor-pointer"
+              className="z-10 px-5 pb-5 text-[#0077b6] text-sm hover:cursor-pointer"
               onClick={() => {
                 showPopup("Cibar");
               }}
@@ -294,10 +342,14 @@ export default function Projects() {
             </p>
           </div>
         </div>
-        <div className="fixed hidden popup z-40 w-screen h-screen top-[calc(15%+2.5rem)] left-[20%]">
-          <div className="w-[60%] h-[70%] bg-gray-800 border-2 border-gray-700 p-5 rounded-lg">
+      </div>
+      <div className="fixed hidden popup z-40 w-screen h-screen top-[calc(15%+2.5rem)] left-[20%]">
+        <div className="w-[60%] h-[70%] bg-gray-800 border-2 border-gray-700 rounded-lg">
+          <div className="w-full h-[6.5rem] bg-gradient-to-b from-gray-700 to-gray-800 via-[#2F3947] p-5">
             <h1 className="popup-title text-[2.175rem] font-bold">Title</h1>
-            <p className="popup-description mt-3">Description</p>
+          </div>
+          <div className="w-full h-[calc(100%-5rem)] p-5">
+            <p className="popup-description">Description</p>
             <div className="flex w-full justify-end">
               <button className="absolute top-[1.25rem]" onClick={hidePopup}>
                 <MdClose className="text-red-600 hover:text-red-700 text-[2.2rem] transition-colors duration-200" />

@@ -389,7 +389,7 @@ export default function Contact() {
             theme === "dark" ? "border-t-gray-200" : "border-t-gray-800"
           }`}
         >
-          <p className="mt-5 mb-12 sm:mb-16">romahapatra@gmail.com</p>
+          <p className="mt-5 mb-12 sm:mb-16">email@rohanmahapatra.com</p>
         </div>
       </div>
     </section>

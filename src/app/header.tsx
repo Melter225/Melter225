@@ -80,7 +80,7 @@ export default function Header() {
       <div
         className={`flex z-50 fixed w-full h-20 items-center ${
           theme === "dark" ? "bg-gray-950/50" : "bg-gray-50/50"
-        } shadow-lg backdrop-blur-md border-b-2 border-gray-950 ${
+        } shadow-lg backdrop-blur-lg border-b-2 border-gray-950 ${
           theme === "dark" ? "border-neutral-800" : "border-neutral-400"
         }`}
       >
@@ -148,7 +148,7 @@ export default function Header() {
       </div>
       {menuOpen && (
         <div className="header-menu z-40 fixed flex md:hidden top-20 right-0 w-full h-[calc(100svh-5rem)]">
-          <div className="flex flex-col flex-grow justify-center w-full backdrop-blur-sm bg-gray-950/70 p-5">
+          <div className="flex flex-col flex-grow justify-center w-full backdrop-blur-md bg-gray-950/70 p-5">
             <div className="grid gap-y-5 place-items-center">
               {navItems.map(({ id, label }, index) => (
                 <p

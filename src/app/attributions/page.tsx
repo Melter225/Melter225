@@ -29,9 +29,9 @@ export default function Attributions() {
       link: "https://www.flaticon.com/free-icons/computer",
     },
     {
-      iconName: "Hashtag icons",
-      creator: "Freepik",
-      link: "https://www.flaticon.com/free-icons/hashtag",
+      iconName: "C++ icons",
+      creator: "meaicon",
+      link: "https://www.flaticon.com/free-icons/c-",
     },
     {
       iconName: "CSS icons",

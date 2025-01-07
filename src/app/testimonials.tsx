@@ -90,25 +90,40 @@ export default function Testimonials() {
 
   return (
     <section id="testimonials" className="mt-28">
-      <div className="w-full text-center">
-        <h1 className="font-semibold text-5xl">Testimonials</h1>
+      <div className="flex flex-col w-full items-center justify-center text-center">
+        <p
+          className={`font-semibold ${
+            theme === "dark" ? "text-indigo-600" : "text-indigo-400"
+          } text-lg`}
+        >
+          Testimonials
+        </p>
+        <h1 className="font-semibold text-4xl lg:text-5xl text-balance">
+          We have worked with thousands of amazing people
+        </h1>
       </div>
-      <div className="inline-flex flex-nowrap w-full overflow-x-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+      {/* <div className="w-full text-center">
+        <h1 className="font-semibold text-5xl">Testimonials</h1>
+      </div> */}
+      <div className="inline-flex flex-nowrap w-full overflow-x-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)] mt-8">
         <div className="row-fin flex w-[400rem] h-[22rem] items-center justify-center animate-infinite-scroll-testimonials pause hover:cursor-pointer gap-x-5 my-10">
           {testimonials.map(
             ({ src, alt, name, username, testimonial }, index) => (
               <div
                 key={`${index}`}
-                className={`flex flex-col justify-center w-[22rem] h-[22rem] bg-neutral-800 rounded-lg shadow-lg ${
+                className={`flex flex-col justify-center w-[22rem] h-[22rem] ${
+                  theme === "dark" ? "bg-gray-800" : "bg-gray-200"
+                } rounded-xl shadow-lg ${
                   theme === "dark" ? "shadow-gray-900" : "shadow-gray-300"
                 } border-2 ${
                   theme === "dark" ? "border-neutral-800" : "border-neutral-400"
                 }`}
               >
                 <div
-                  className={`flex flex-grow self-start items-center w-full h-[8rem] ${
-                    theme === "dark" ? "bg-gray-800" : "bg-gray-100"
-                  } rounded-t-lg`}
+                  className={`flex flex-grow self-start items-center w-full h-[8rem] rounded-t-lg bg-cover bg-center bg-no-repeat`}
+                  style={{
+                    backgroundImage: 'url("/TestimonialsBackground.png")',
+                  }}
                 >
                   <div className="flex w-full items-center ml-3">
                     <div className="justify-self-start ml-4">
@@ -142,16 +157,19 @@ export default function Testimonials() {
             ({ src, alt, name, username, testimonial }, index) => (
               <div
                 key={`${index}`}
-                className={`flex flex-col justify-center w-[22rem] h-[22rem] bg-neutral-800 rounded-lg shadow-lg ${
+                className={`flex flex-col justify-center w-[22rem] h-[22rem] ${
+                  theme === "dark" ? "bg-gray-800" : "bg-gray-200"
+                } rounded-xl shadow-lg ${
                   theme === "dark" ? "shadow-gray-900" : "shadow-gray-300"
                 } border-2 ${
                   theme === "dark" ? "border-neutral-800" : "border-neutral-400"
                 }`}
               >
                 <div
-                  className={`flex flex-grow self-start items-center w-full h-[8rem] ${
-                    theme === "dark" ? "bg-gray-800" : "bg-gray-100"
-                  } rounded-t-lg`}
+                  className={`flex flex-grow self-start items-center w-full h-[8rem] rounded-t-lg bg-cover bg-center bg-no-repeat`}
+                  style={{
+                    backgroundImage: 'url("/TestimonialsBackground.png")',
+                  }}
                 >
                   <div className="flex w-full items-center ml-3">
                     <div className="justify-self-start ml-4">

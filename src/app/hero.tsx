@@ -58,10 +58,8 @@ export default function Hero() {
         alt: "React Icon",
       },
       {
-        src: `${
-          theme === "dark" ? "/CSharpIcon_Inverted.png" : "/CSharpIcon.png"
-        }`,
-        alt: "C# Icon",
+        src: `${theme === "dark" ? "/C++Icon_Inverted.png" : "/C++Icon.png"}`,
+        alt: "C++ Icon",
       },
       {
         src: `${theme === "dark" ? "/CSSIcon_Inverted.png" : "/CSSIcon.png"}`,
@@ -154,7 +152,7 @@ export default function Hero() {
   const [icons, setIcons] = useState<IconBackground[]>(() => generateIcons());
 
   const backgroundDelay = useCallback((index: number) => {
-    return 2 + index * 0.07;
+    return 2.7 + index * 0.05;
   }, []);
 
   useEffect(() => {
@@ -180,15 +178,15 @@ export default function Hero() {
   useEffect(() => {
     const updateIconCount = () => {
       if (window.innerWidth < 480) {
-        setIconCount(100);
+        setIconCount(50);
       } else if (window.innerWidth < 640) {
-        setIconCount(150);
+        setIconCount(75);
       } else if (window.innerWidth < 768) {
-        setIconCount(250);
+        setIconCount(100);
       } else if (window.innerWidth < 1024) {
-        setIconCount(300);
+        setIconCount(125);
       } else {
-        setIconCount(350);
+        setIconCount(150);
       }
     };
 
@@ -211,10 +209,13 @@ export default function Hero() {
       const { scrollTop, scrollHeight, clientHeight } = scrollContainer;
 
       if (
-        (e.deltaY > 0 && scrollTop < scrollHeight - clientHeight) ||
+        (e.deltaY > 0 &&
+          scrollTop < scrollHeight - clientHeight &&
+          window.scrollY === 0) ||
         (e.deltaY < 0 &&
           scrollTop < scrollHeight - clientHeight &&
-          scrollTop > 0) ||
+          scrollTop > 0 &&
+          window.scrollY === 0) ||
         (e.deltaY < 0 && window != undefined && window.scrollY === 0)
       ) {
         e.preventDefault();
@@ -241,7 +242,7 @@ export default function Hero() {
         {/* <p>Placeholder for hero</p> */}
         <div className="relative h-[45.5rem] overflow-y-auto mt-20 scrollbar-hide">
           <div
-            className="background-text absolute w-full h-[120rem] overflow-hidden"
+            className="background-text absolute w-full h-[150rem] overflow-hidden"
             style={{
               transform: `translateY(${
                 typeof window !== "undefined" ? window.scrollY : 0
@@ -262,7 +263,7 @@ export default function Hero() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 0.8 }}
                 transition={{
-                  duration: 0.07,
+                  duration: 0.05,
                   delay: backgroundDelay(index),
                   ease: "easeIn",
                 }}
@@ -272,7 +273,7 @@ export default function Hero() {
                   alt={alt}
                   width={size}
                   height={size}
-                  className="blur-[1px] opacity-[0.3] mix-blend-difference filter contrast-125 brightness-90 hover:opacity-[0.5] hover:cursor-pointer transition-opacity duration-200 ease-in-out"
+                  className="blur-[1px] opacity-[0.3] mix-blend-difference filter contrast-125 brightness-90 hover:opacity-[0.5] transition-opacity duration-200 ease-in-out"
                   loading="lazy"
                 />
               </motion.div>
@@ -289,7 +290,7 @@ export default function Hero() {
               }`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 1.25, ease: "easeIn" }}
+              transition={{ duration: 0.7, delay: 1.25, ease: "easeIn" }}
             >
               Rohan Mahapatra
             </motion.h1>
@@ -312,6 +313,33 @@ export default function Hero() {
               >
                 Remaking the digital experience
               </motion.h1>
+            </div>
+          </div>
+          <div className="flex justify-center">
+            <div className="flex flex-row gap-x-5 mt-5">
+              <motion.button
+                className="bg-indigo-600 px-5 py-[0.8rem] rounded-2xl font-normal text-lg"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1.2, delay: 1.5, ease: "easeOut" }}
+              >
+                Get in Touch
+              </motion.button>
+              <motion.button
+                className="flex flex-row gap-x-2 items-center justify-center bg-transparent px-4 py-2 rounded-lg text-lg"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1.2, delay: 1.5, ease: "easeOut" }}
+              >
+                <Image
+                  className="invert"
+                  src="/CV.png"
+                  alt="CV Icon"
+                  width={35}
+                  height={35}
+                />
+                Download CV
+              </motion.button>
             </div>
           </div>
         </div>

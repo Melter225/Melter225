@@ -65,12 +65,12 @@ export default function Statistics() {
               >
                 <p className="pl-5 pt-5 text-2xl font-semibold">Hobbies</p>
                 <p className="text-sm lg:text-base p-5">
-                  Beyond technology, I pursue creative writing, exploring
+{/*                   Beyond technology, I pursue creative writing, exploring
                   various forms to express my thoughts. I&apos;ve dedicated
                   eight years to playing the tabla, a traditional Indian
                   percussion instrument, connecting me to my heritage. I also
                   practice fencing with my sister, enjoying its blend of
-                  strategy and physical discipline.
+                  strategy and physical discipline. */}
                 </p>
                 {/* <div
               className={`flex flex-col w-1/2 justify-center ${
